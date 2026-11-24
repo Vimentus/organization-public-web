@@ -50,15 +50,17 @@
 *::before,
 *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--color-navy); } /* navy: what shows behind the phone's bars and when the page bounces */
 
 body {
   font-family: var(--font-body);
   color: var(--color-text);
-  background: var(--color-white);
+  background: var(--color-navy);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+main { background: var(--color-white); padding-bottom: 120px; } /* the gap above the footer */
+.main--home { padding-bottom: 0; }
 /* Clip anything wider than the screen, on both html and body: phones ignore it on body
    alone and zoom out instead. "clip" (unlike "hidden") keeps the pinned sections working. */
 html, body { overflow-x: hidden; }
@@ -1819,7 +1821,6 @@ h1, h2, h3, h4 {
 .footer {
   position: relative;
   overflow: hidden;
-  margin-top: 120px;
   padding: clamp(64px, 9vw, 100px) 0 32px;
   background: var(--color-navy);
   color: var(--color-muted-dark);
@@ -2240,7 +2241,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .cta p { font-size: 1rem; }
   .cta__actions { flex-direction: column; }
   .cta__actions .btn { justify-content: center; }
-  .footer { padding-top: 64px; margin-top: 72px; }
+  .footer { padding-top: 64px; }
+  main:not(.main--home) { padding-bottom: 72px; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
 
   /* Project pages */
@@ -3186,3 +3188,117 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .works.is-animated .end__cta-actions .btn { padding: 12px 20px; }
   .works.is-animated .end__cta-points { gap: 6px 16px; font-size: 12px; }
 }
+
+/* =========================================================
+   LITE — phones / touch tablets (script.js adds html.is-lite)
+   The same scenes with only solid shapes and ready-made layers moving. See script.js "lite".
+   ========================================================= */
+.hexfill, .hexhole { position: absolute; left: 0; top: 0; width: 0; height: 0; visibility: hidden; pointer-events: none; }
+.hexfill i { position: absolute; left: -173.2px; top: -100px; width: 346.4px; height: 200px; will-change: transform; }
+.hexhole i { position: absolute; left: 0; top: -2000px; width: 2400px; height: 4000px; transform-origin: 0 50%; will-change: transform; }
+.hexfill--fixed { position: fixed; z-index: 50; }
+.hexfill--cta { z-index: 29; }
+.svc__stage > .hexfill { z-index: 6; }
+.flow > .hexfill { position: absolute; z-index: 0; }
+
+/* off: everything that redraws while scrolling, or keeps animating by redrawing */
+.is-lite :is(.open__rim, .svc__iris, .svc__rim, .iris-transfer, .iris-transfer__rim, .flow__ripple, .works__tunnel, .works__rim--cta, .flow__aura polygon:nth-child(-n + 2)) { display: none !important; }
+.is-lite :is(.open__scene, .flow__bloom, .end__cta) { clip-path: none !important; }
+.is-lite :is(.statement__ring polygon, .orbit__logo polygon, .wz-tick, .gy-tick, .nb-count, .wz-bar:last-child, .nb-row--new, .nb-u.is-new, .nb-toast, .wz-live i) { animation: none !important; }
+.is-lite .nb-row--new { display: none; }
+.is-lite .nb-toast { opacity: 0; }
+.is-lite .statement__light { display: none; }
+.is-lite .about--handoff:not(.is-shown) .orbit__path { animation-play-state: paused; }
+.is-lite .open.is-gone .trust__track { animation-play-state: paused; }
+.is-lite .vhero__ghost { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(10, 14, 23, 0.6); }
+.is-lite .nav { transition: none; }
+.is-lite .orbit__planet { box-shadow: 0 6px 14px -6px rgba(10, 14, 23, 0.3); }
+.is-lite .flow__step.is-current .flow__node { filter: none; }
+.is-lite .orb { filter: none; background: radial-gradient(closest-side, rgba(34, 211, 238, 0.8), transparent); }
+.is-lite .sp-sheet { clip-path: none; border-radius: 22px 22px 0 0; }
+
+/* layers that get moved / faded: prepared once */
+.is-lite :is(.open__stage, .statement__content, .statement__iris, .svc__panels, .svc__head, .flow__bloom, .flow__head, .flow__halo, .about__text, .orbit, .works__bg, .works__light, .end__inner) { will-change: opacity; }
+.is-lite .flow__halo, .is-lite .orbit { will-change: transform, opacity; }
+
+/* hidden scenes: opacity too, because shapes inside set visibility themselves */
+.is-lite .svc--opens:not(.is-in) .svc__stage,
+.is-lite .about--handoff:not(.is-flowing) .flow { opacity: 0; }
+
+/* hero: nothing is cropped, white planes close in around a hexagon */
+.is-lite .open__stage { isolation: isolate; }
+
+/* what we do */
+.svc__tile {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  background: var(--color-navy) center / cover no-repeat;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.is-lite .svc.is-animated .svc__panel,
+.is-lite .svc.is-animated .svc__panel .svc__img { transition: none; }
+.is-lite .svc.is-animated .svc__panel .svc__img,
+.is-lite .svc.is-animated .svc__panel:not(.is-active) .svc__img { transform: none; filter: none; }
+@media (max-width: 900px) {
+  .is-lite .svc.is-animated .svc__panels { position: relative; display: block; margin: 0 var(--svc-pad); padding: 0; width: auto; max-width: none; overflow: hidden; border-radius: 18px; }
+  .is-lite .svc.is-animated .svc__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: calc(100% - 3 * var(--bar, 50px)); /* the covered cards' bars (SVC_BAR in script.js) */
+    border-radius: 18px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .is-lite .svc.is-animated .svc__panel::after { transition: opacity 0.3s; }
+  .is-lite .svc.is-animated .svc__panel:not(.is-active)::after { opacity: 0.72; }
+  .is-lite .svc.is-animated .svc__tab { top: 25px; transition: opacity 0.25s; }
+  .is-lite .svc.is-animated .svc__panel:not(.is-active) .svc__tab { transition-delay: 0s; }
+  .is-lite .svc.is-animated .svc__body { transition: none; }
+  .is-lite .svc.is-animated .svc__panel:not(.is-active) .svc__body { visibility: hidden; transition: visibility 0s 0.2s; }
+  .is-lite .svc.is-animated .svc__body > * { transform: none; transition: opacity 0.2s ease; }
+  .is-lite .svc.is-animated .svc__panel.is-active .svc__body > * { transition: opacity 0.35s ease; transition-delay: 0s; }
+}
+
+@media (max-width: 900px) and (max-height: 480px) { /* sideways phones: no heading, the cards get the height */
+  .is-lite .svc.is-animated .svc__head { display: none; }
+  .is-lite .svc.is-animated .svc__tab { display: none; }
+}
+
+/* our mission: the picture fades as one layer */
+.is-lite .statement.is-animated { background: var(--color-navy); }
+.is-lite .statement__photo { opacity: 1; transform: none; mask-image: none; -webkit-mask-image: none; }
+.is-lite .statement__shade {
+  opacity: 1;
+  background:
+    linear-gradient(var(--color-navy), transparent 26%, transparent 88%, var(--color-navy)),
+    radial-gradient(ellipse 60% 46% at 50% 48%, rgba(10, 14, 23, 0.72) 45%, transparent);
+}
+.is-lite .statement__iris::before { display: none; }
+.is-lite .statement__ring { opacity: 1; }
+.is-lite .statement__content { transform: none; }
+
+/* why → how */
+.is-lite .about--handoff .flow__bloom { opacity: 0; }
+.is-lite .flow__bloom::before { opacity: 1; }
+.is-lite .flow__halo { opacity: var(--glow, 0); }
+
+/* our work */
+.is-lite .works.is-animated .works__fly { right: auto; bottom: auto; transform-origin: 0 0; will-change: transform, opacity; }
+.works__liteRing { position: absolute; left: -150px; top: -150px; width: 300px; height: 300px; visibility: hidden; pointer-events: none; will-change: transform, opacity; }
+.works__liteRing svg { display: block; width: 100%; height: 100%; }
+.works__liteRing polygon { fill: none; stroke: var(--color-accent); stroke-width: 0.8; }
+.is-lite .works.is-animated :is(.works__intro, .wplane).is-seen { will-change: transform, opacity; }
+.is-lite :is(.con-feed, .nb-table) { mask-image: none; -webkit-mask-image: none; }
+.is-lite .works__bg::before { mask-image: none; -webkit-mask-image: none; opacity: 0.4; }
+
+/* testimonials → CTA */
+.is-lite .end__core { fill: var(--color-accent); }
+.is-lite .works.is-animated .end__cta { z-index: 30; will-change: opacity; }
