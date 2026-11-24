@@ -1,0 +1,277 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 614 450" width="614" height="450" font-family="system-ui, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+<title>Gym staff panel: live list of entries at the door</title>
+<defs><linearGradient id="rail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcc1a" stop-opacity=".1"/><stop offset=".3" stop-color="#ffcc1a" stop-opacity="0"/></linearGradient></defs>
+<rect x="0" y="0" width="614" height="450" rx="0" fill="#0e0e0f"/>
+<rect x="0" y="0" width="40" height="450" rx="0" fill="url(#rail)"/>
+<path d="M40.5 0V450" stroke="#fff" stroke-opacity=".07"/>
+<rect x="10" y="12" width="20" height="20" rx="5" fill="#ffcc1a"/>
+<path d="M14.5 22h11M15.5 19v6M24.5 19v6M13 20.5v3M27 20.5v3" stroke="#0b0b0c" stroke-width="1.6" stroke-linecap="round"/>
+<g transform="translate(13 73) scale(0.583)" fill="none" stroke="#a3a097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></g>
+<g transform="translate(13 100) scale(0.583)" fill="none" stroke="#a3a097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></g>
+<rect x="6" y="121" width="34" height="26" rx="5" fill="#ffcc1a" fill-opacity="0.13"/>
+<rect x="0" y="127" width="2.5" height="14" rx="1.2" fill="#ffcc1a"/>
+<g transform="translate(13 127) scale(0.583)" fill="none" stroke="#ffcc1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></g>
+<g transform="translate(13 154) scale(0.583)" fill="none" stroke="#a3a097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></g>
+<path d="M7 180.5H33" stroke="#fff" stroke-opacity=".08"/>
+<g transform="translate(13 205) scale(0.583)" fill="none" stroke="#a3a097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></g>
+<g transform="translate(13 232) scale(0.583)" fill="none" stroke="#a3a097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 11v2M13 17v2"/></g>
+<g transform="translate(13 259) scale(0.583)" fill="none" stroke="#a3a097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></g>
+<circle cx="20" cy="398" r="13" fill="#0e0e0f" stroke="#ffcc1a" stroke-opacity=".6"/>
+<text x="20" y="401" font-size="7" fill="#f2f1ec" font-weight="700" text-anchor="middle">SO</text>
+<g transform="translate(13 421) scale(0.583)" fill="none" stroke="#a3a097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></g>
+<text x="62" y="30" font-size="14.5" fill="#f2f1ec" font-weight="700" text-anchor="start">Entries</text>
+<rect x="124" y="17" width="44" height="16" rx="8" fill="#4ade80" fill-opacity="0.12"/>
+<circle class="ring" cx="134" cy="25" r="3" fill="#4ade80"/><circle cx="134" cy="25" r="2.6" fill="#4ade80"/>
+<text x="141" y="28" font-size="6.8" fill="#4ade80" font-weight="700" text-anchor="start">LIVE</text>
+<rect x="62.5" y="42.5" width="176" height="25" rx="4" fill="#0e0e0f" stroke="#2e2d2a" stroke-width="1"/>
+<text x="71" y="58.5" font-size="8.2" fill="#6f6c65" font-weight="400" text-anchor="start">Search name, reason, pass or staff</text>
+<rect x="244.5" y="42.5" width="172" height="25" rx="5" fill="#0e0e0f" stroke="#2e2d2a" stroke-width="1"/>
+<rect x="247" y="45" width="40" height="20" rx="4" fill="#ffcc1a"/>
+<text x="267" y="58.5" font-size="8.2" fill="#0b0b0c" font-weight="700" text-anchor="middle">Today</text>
+<text x="310" y="58.5" font-size="8.2" fill="#a3a097" font-weight="600" text-anchor="middle">7 days</text>
+<text x="352" y="58.5" font-size="8.2" fill="#a3a097" font-weight="600" text-anchor="middle">30 days</text>
+<text x="394" y="58.5" font-size="8.2" fill="#a3a097" font-weight="600" text-anchor="middle">90 days</text>
+<rect x="422.5" y="42.5" width="177" height="25" rx="5" fill="#0e0e0f" stroke="#2e2d2a" stroke-width="1"/>
+<rect x="425" y="45" width="30" height="20" rx="4" fill="#ffcc1a"/>
+<text x="440" y="58.5" font-size="8.2" fill="#0b0b0c" font-weight="700" text-anchor="middle">All</text>
+<circle cx="468" cy="55.5" r="2.4" fill="#4ade80"/>
+<text x="475" y="58.5" font-size="8.2" fill="#a3a097" font-weight="600" text-anchor="start">Granted</text>
+<circle cx="522" cy="55.5" r="2.4" fill="#ff8a80"/>
+<text x="529" y="58.5" font-size="8.2" fill="#a3a097" font-weight="600" text-anchor="start">Denied</text>
+<g class="cnt" style="animation-delay:-31.25s;opacity:1">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">128 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-28.75s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">129 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-26.25s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">130 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-23.75s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">131 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-21.25s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">132 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-18.75s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">133 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-16.25s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">134 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-13.75s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">135 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-11.25s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">136 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-8.75s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">137 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-6.25s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">138 entries today</text>
+</g>
+<g class="cnt" style="animation-delay:-3.75s;opacity:0">
+<text x="178" y="28.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">139 entries today</text>
+</g>
+<rect x="62.5" y="78.5" width="537" height="384" rx="5" fill="#18181a" stroke="#2e2d2a" stroke-width="1"/>
+<text x="71" y="93.5" font-size="7.8" fill="#a3a097" font-weight="600" text-anchor="start">Time</text>
+<text x="140" y="93.5" font-size="7.8" fill="#a3a097" font-weight="600" text-anchor="start">Member</text>
+<text x="284" y="93.5" font-size="7.8" fill="#a3a097" font-weight="600" text-anchor="start">Result</text>
+<text x="376" y="93.5" font-size="7.8" fill="#a3a097" font-weight="600" text-anchor="start">Reason</text>
+<text x="492" y="93.5" font-size="7.8" fill="#a3a097" font-weight="600" text-anchor="start">Pass</text>
+
+<path d="M62 102.5H600" stroke="#2e2d2a"/>
+<defs><clipPath id="tbl"><rect x="62" y="103" width="538" height="347"/></clipPath></defs>
+<rect class="flash" x="63" y="103" width="536" height="26" fill="#ffcc1a" opacity="0"/>
+<g clip-path="url(#tbl)"><g class="feed">
+<text x="140" y="119.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Alex Novak</text>
+<rect x="284" y="110.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="119.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="119.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="119.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">10 entries (7 left)</text>
+
+<text x="140" y="145.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Sara Kovac</text>
+<rect x="284" y="136.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="145.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="145.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="145.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="171.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Tomas Varga</text>
+<rect x="284" y="162.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="171.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="171.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="171.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="197.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Nina Horvat</text>
+<rect x="284" y="188.5" width="34.52" height="12.5" rx="6.25" fill="#ff8a80" fill-opacity="0.14"/>
+<text x="301.26" y="197.5" font-size="7" fill="#ff8a80" font-weight="700" text-anchor="middle">Denied</text>
+<text x="376" y="197.5" font-size="8.5" fill="#ff8a80" font-weight="400" text-anchor="start">Pass expired</text>
+<text x="492" y="197.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">—</text>
+
+<text x="140" y="223.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Peter Balog</text>
+<rect x="284" y="214.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="223.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="223.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="223.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Student monthly</text>
+
+<text x="140" y="249.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Lena Toth</text>
+<rect x="189.4" y="240.5" width="52.66400000000001" height="12.5" rx="6.25" fill="#2dd4bf" fill-opacity="0.14"/>
+<text x="215.732" y="249.5" font-size="6.2" fill="#2dd4bf" font-weight="700" text-anchor="middle">With trainer</text>
+<rect x="284" y="240.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="249.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="249.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="249.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="275.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Marek Sipos</text>
+<rect x="284" y="266.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="275.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="275.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="275.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">10 entries (6 left)</text>
+
+<text x="140" y="301.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Eva Molnar</text>
+<rect x="284" y="292.5" width="34.52" height="12.5" rx="6.25" fill="#ff8a80" fill-opacity="0.14"/>
+<text x="301.26" y="301.5" font-size="7" fill="#ff8a80" font-weight="700" text-anchor="middle">Denied</text>
+<text x="376" y="301.5" font-size="8.5" fill="#ff8a80" font-weight="400" text-anchor="start">Code already used</text>
+<text x="492" y="301.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">—</text>
+
+<text x="140" y="327.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Jakub Urban</text>
+<rect x="284" y="318.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="327.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="327.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="327.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="353.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Petra Nagy</text>
+<rect x="284" y="344.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="353.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="353.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="353.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Single entry</text>
+
+<text x="140" y="379.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Oliver Kral</text>
+<rect x="284" y="370.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="379.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="379.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="379.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="405.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Mia Dvorak</text>
+<rect x="284" y="396.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="405.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="405.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="405.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">10 entries (3 left)</text>
+
+<text x="140" y="431.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Alex Novak</text>
+<rect x="284" y="422.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="431.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="431.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="431.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">10 entries (7 left)</text>
+
+<text x="140" y="457.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Sara Kovac</text>
+<rect x="284" y="448.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="457.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="457.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="457.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="483.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Tomas Varga</text>
+<rect x="284" y="474.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="483.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="483.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="483.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="509.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Nina Horvat</text>
+<rect x="284" y="500.5" width="34.52" height="12.5" rx="6.25" fill="#ff8a80" fill-opacity="0.14"/>
+<text x="301.26" y="509.5" font-size="7" fill="#ff8a80" font-weight="700" text-anchor="middle">Denied</text>
+<text x="376" y="509.5" font-size="8.5" fill="#ff8a80" font-weight="400" text-anchor="start">Pass expired</text>
+<text x="492" y="509.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">—</text>
+
+<text x="140" y="535.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Peter Balog</text>
+<rect x="284" y="526.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="535.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="535.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="535.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Student monthly</text>
+
+<text x="140" y="561.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Lena Toth</text>
+<rect x="189.4" y="552.5" width="52.66400000000001" height="12.5" rx="6.25" fill="#2dd4bf" fill-opacity="0.14"/>
+<text x="215.732" y="561.5" font-size="6.2" fill="#2dd4bf" font-weight="700" text-anchor="middle">With trainer</text>
+<rect x="284" y="552.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="561.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="561.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="561.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="587.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Marek Sipos</text>
+<rect x="284" y="578.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="587.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="587.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="587.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">10 entries (6 left)</text>
+
+<text x="140" y="613.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Eva Molnar</text>
+<rect x="284" y="604.5" width="34.52" height="12.5" rx="6.25" fill="#ff8a80" fill-opacity="0.14"/>
+<text x="301.26" y="613.5" font-size="7" fill="#ff8a80" font-weight="700" text-anchor="middle">Denied</text>
+<text x="376" y="613.5" font-size="8.5" fill="#ff8a80" font-weight="400" text-anchor="start">Code already used</text>
+<text x="492" y="613.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">—</text>
+
+<text x="140" y="639.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Jakub Urban</text>
+<rect x="284" y="630.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="639.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="639.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="639.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="665.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Petra Nagy</text>
+<rect x="284" y="656.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="665.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="665.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="665.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Single entry</text>
+
+<text x="140" y="691.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Oliver Kral</text>
+<rect x="284" y="682.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="691.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="691.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="691.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Monthly</text>
+
+<text x="140" y="717.5" font-size="8.5" fill="#ffcc1a" font-weight="600" text-anchor="start">Mia Dvorak</text>
+<rect x="284" y="708.5" width="38.44" height="12.5" rx="6.25" fill="#4ade80" fill-opacity="0.14"/>
+<text x="303.22" y="717.5" font-size="7" fill="#4ade80" font-weight="700" text-anchor="middle">Granted</text>
+<text x="376" y="717.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">Entry granted</text>
+<text x="492" y="717.5" font-size="8.5" fill="#f2f1ec" font-weight="400" text-anchor="start">10 entries (3 left)</text>
+
+</g>
+<text x="71" y="119.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:42:10</text>
+<path d="M62 128.5H600" stroke="#2e2d2a"/>
+<text x="71" y="145.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:39:03</text>
+<path d="M62 154.5H600" stroke="#2e2d2a"/>
+<text x="71" y="171.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:35:56</text>
+<path d="M62 180.5H600" stroke="#2e2d2a"/>
+<text x="71" y="197.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:32:49</text>
+<path d="M62 206.5H600" stroke="#2e2d2a"/>
+<text x="71" y="223.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:29:42</text>
+<path d="M62 232.5H600" stroke="#2e2d2a"/>
+<text x="71" y="249.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:26:35</text>
+<path d="M62 258.5H600" stroke="#2e2d2a"/>
+<text x="71" y="275.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:23:28</text>
+<path d="M62 284.5H600" stroke="#2e2d2a"/>
+<text x="71" y="301.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:20:21</text>
+<path d="M62 310.5H600" stroke="#2e2d2a"/>
+<text x="71" y="327.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:17:14</text>
+<path d="M62 336.5H600" stroke="#2e2d2a"/>
+<text x="71" y="353.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:14:07</text>
+<path d="M62 362.5H600" stroke="#2e2d2a"/>
+<text x="71" y="379.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:11:00</text>
+<path d="M62 388.5H600" stroke="#2e2d2a"/>
+<text x="71" y="405.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:07:53</text>
+<path d="M62 414.5H600" stroke="#2e2d2a"/>
+<text x="71" y="431.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:04:46</text>
+<path d="M62 440.5H600" stroke="#2e2d2a"/>
+<text x="71" y="457.5" font-size="8.5" fill="#a3a097" font-weight="400" text-anchor="start">17:01:39</text>
+<path d="M62 466.5H600" stroke="#2e2d2a"/>
+</g>
+<style>
+.feed { transform: translateY(-312px); animation: feed 30.0s -1.25s infinite; }
+@keyframes feed { 0.000% { transform: translateY(-312px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 2.000% { transform: translateY(-286px); } 8.333% { transform: translateY(-286px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 10.333% { transform: translateY(-260px); } 16.667% { transform: translateY(-260px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 18.667% { transform: translateY(-234px); } 25.000% { transform: translateY(-234px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 27.000% { transform: translateY(-208px); } 33.333% { transform: translateY(-208px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 35.333% { transform: translateY(-182px); } 41.667% { transform: translateY(-182px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 43.667% { transform: translateY(-156px); } 50.000% { transform: translateY(-156px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 52.000% { transform: translateY(-130px); } 58.333% { transform: translateY(-130px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 60.333% { transform: translateY(-104px); } 66.667% { transform: translateY(-104px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 68.667% { transform: translateY(-78px); } 75.000% { transform: translateY(-78px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 77.000% { transform: translateY(-52px); } 83.333% { transform: translateY(-52px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 85.333% { transform: translateY(-26px); } 91.667% { transform: translateY(-26px); animation-timing-function: cubic-bezier(.22,1,.36,1); } 93.667% { transform: translateY(0px); } 100% { transform: translateY(0); } }
+.flash { animation: flash 2.5s -1.25s infinite; }
+@keyframes flash { 0% { opacity: 0; } 10% { opacity: .16; } 75%, 100% { opacity: 0; } }
+.cnt { animation: cnt 30.0s infinite steps(1, end); }
+@keyframes cnt { 0% { opacity: 1; } 8.333%, 100% { opacity: 0; } }
+.ring { transform-box: fill-box; transform-origin: center; animation: ring 1.8s infinite ease-out; }
+@keyframes ring { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .feed, .flash, .cnt, .ring { animation: none; } }
+</style>
+</svg>

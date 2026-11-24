@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 640" preserveAspectRatio="xMinYMid slice">
+<g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1.5" fill="#fff">
+<circle cx="0" cy="640" r="120" fill="none" stroke="#fff" vector-effect="non-scaling-stroke" stroke-opacity="0.12" stroke-width="1"/>
+<path d="M0.0 520.0L0.0 530.0M7.8 520.3L7.5 525.2M15.7 521.0L15.0 526.0M23.4 522.3L22.4 527.2M31.1 524.1L29.8 528.9M38.6 526.4L37.0 531.1M45.9 529.1L42.1 538.4M53.1 532.4L50.9 536.9M60.0 536.1L57.5 540.4M66.7 540.2L63.9 544.4M73.1 544.8L70.0 548.8M79.1 549.8L75.8 553.5M84.9 555.1L77.8 562.2M90.2 560.9L86.5 564.2M95.2 566.9L91.2 570.0M99.8 573.3L95.6 576.1M103.9 580.0L99.6 582.5M107.6 586.9L103.1 589.1M110.9 594.1L101.6 597.9M113.6 601.4L108.9 603.0M115.9 608.9L111.1 610.2M117.7 616.6L112.8 617.6M119.0 624.3L114.0 625.0M119.7 632.2L114.8 632.5M120.0 640.0L110.0 640.0" fill="none" stroke="#fff" vector-effect="non-scaling-stroke" stroke-opacity="0.18"/>
+<path d="M33 40H47M40 33V47" fill="none" stroke="#fff" vector-effect="non-scaling-stroke" stroke-opacity="0.32"/>
+</g>
+</svg>

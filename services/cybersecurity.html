@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity — Vimentus</title>
+  <meta name="description" content="Threat detection, network security, vulnerability management, hardening, cloud &amp; email security and security awareness training." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="service-page">
+
+  <!-- Hidden SVG icon sprite (reuse with <svg><use href="#i-name"/></svg>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"/></symbol>
+      <symbol id="i-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8l-2 2 2 2M17 8l2 2-2 2M13 7l-2 6"/></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+      <symbol id="i-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></symbol>
+      <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/><path d="M6.5 17A2.5 2.5 0 0 0 4 19.5 2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m1 6 7-4 8 4 7-4v16l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></symbol>
+      <symbol id="i-quote" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11c0-3.3 2.7-6 6-6v2c-2.2 0-4 1.8-4 4h4v8H4v-8zm10 0c0-3.3 2.7-6 6-6v2c-2.2 0-4 1.8-4 4h4v8h-6v-8z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="../index.html" class="logo" aria-label="Vimentus home">
+        <img class="logo__mark" src="../img/logo.png" alt="" width="347" height="400" />
+        <span>Vimentus</span>
+      </a>
+
+      <nav aria-label="Main">
+        <ul class="nav__menu" id="navMenu">
+
+          <!-- Services -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Services <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega mega--wide">
+              <div class="mega__grid">
+                <a href="../services/cybersecurity.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-shield"/></svg></span>
+                  <span><span class="mega__title">Cybersecurity</span><span class="mega__desc">Audits, pentesting, SOC &amp; threat protection.</span></span>
+                </a>
+                <a href="../services/network-infrastructure.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-network"/></svg></span>
+                  <span><span class="mega__title">Network &amp; Infrastructure</span><span class="mega__desc">Design, deployment and 24/7 monitoring.</span></span>
+                </a>
+                <div class="mega__feature">
+                  <div>
+                    <h4>Free security assessment</h4>
+                    <p>Find out where your business is exposed — in under a week.</p>
+                  </div>
+                  <a href="../contact.html">Book now <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+                </div>
+                <a href="../services/web-development.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-web"/></svg></span>
+                  <span><span class="mega__title">Web Design &amp; Development</span><span class="mega__desc">Fast, beautiful sites and web apps.</span></span>
+                </a>
+                <a href="../services/custom-software.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-code"/></svg></span>
+                  <span><span class="mega__title">Custom Software</span><span class="mega__desc">Tailor-made tools built around your workflow.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Solutions -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Solutions <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega">
+              <div class="mega__grid">
+                <p class="mega__heading">By industry</p>
+                <a href="../solutions/finance.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-bank"/></svg></span>
+                  <span><span class="mega__title">Finance</span><span class="mega__desc">Compliance-ready systems.</span></span>
+                </a>
+                <a href="../solutions/healthcare.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-heart"/></svg></span>
+                  <span><span class="mega__title">Healthcare</span><span class="mega__desc">Protect patient data.</span></span>
+                </a>
+                <a href="../solutions/ecommerce.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-cart"/></svg></span>
+                  <span><span class="mega__title">E-commerce</span><span class="mega__desc">Stores that scale.</span></span>
+                </a>
+                <a href="../solutions/enterprise.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-building"/></svg></span>
+                  <span><span class="mega__title">Enterprise</span><span class="mega__desc">Modernise legacy IT.</span></span>
+                </a>
+                <p class="mega__heading">By need</p>
+                <a href="../solutions/cloud-migration.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-cloud"/></svg></span>
+                  <span><span class="mega__title">Cloud Migration</span><span class="mega__desc">Move safely to the cloud.</span></span>
+                </a>
+                <a href="../solutions/startups.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-rocket"/></svg></span>
+                  <span><span class="mega__title">Startups</span><span class="mega__desc">From MVP to launch.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Company -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Company <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega">
+              <div class="mega__grid">
+                <a href="../about.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-info"/></svg></span>
+                  <span><span class="mega__title">About Us</span><span class="mega__desc">Our story and mission.</span></span>
+                </a>
+                <a href="../team.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-users"/></svg></span>
+                  <span><span class="mega__title">Our Team</span><span class="mega__desc">Meet the experts.</span></span>
+                </a>
+                <a href="../careers.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-briefcase"/></svg></span>
+                  <span><span class="mega__title">Careers</span><span class="mega__desc">Join us — we're hiring.</span></span>
+                </a>
+                <a href="../blog.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-book"/></svg></span>
+                  <span><span class="mega__title">Blog &amp; Insights</span><span class="mega__desc">News, guides and research.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Our work -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Our work <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega mega--wide">
+              <div class="mega__grid">
+                <a href="../work/security-monitoring-wazuh.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-shield"/></svg></span>
+                  <span><span class="mega__title">Security monitoring with Wazuh</span><span class="mega__desc">Open-source SIEM, EDR and network watch.</span></span>
+                </a>
+                <a href="../work/gym-admin-portal-qr-access.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-code"/></svg></span>
+                  <span><span class="mega__title">Gym portal with QR access</span><span class="mega__desc">Members get in with a code on their phone.</span></span>
+                </a>
+                <div class="mega__feature">
+                  <div>
+                    <h4>See all our work</h4>
+                    <p>Real projects, planned, built and secured by one team.</p>
+                  </div>
+                  <a href="../index.html#work">View projects <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+                </div>
+                <a href="../work/landscaping-company-website.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-web"/></svg></span>
+                  <span><span class="mega__title">Landscaping company website</span><span class="mega__desc">3D, parallax and fast on any device.</span></span>
+                </a>
+                <a href="../work/segmented-network-asset-map.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-network"/></svg></span>
+                  <span><span class="mega__title">Segmented network &amp; asset map</span><span class="mega__desc">DMZ, protected zones, all in NetBox.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav__item"><a href="../contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="../contact.html" class="btn btn--primary btn--sm">Get a quote <svg><use href="#i-arrow"/></svg></a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================
+         HERO over the service's photo. The photo (.sp-top-bg) is pinned behind
+         both the hero and the white sheet below, so the sheet rolls up over the
+         same picture (styles: "SERVICE PAGES").
+         ===================================================== -->
+    <div class="sp-top" style="--bg-img: url('../img/cyber-code.jpg')">
+      <div class="sp-top-bg" aria-hidden="true"></div>
+      <section class="sp-hero" aria-labelledby="sp-title">
+        <div class="sp-hero__inner">
+          <span class="sp-eyebrow"><svg><use href="#i-shield"/></svg>Cybersecurity</span>
+          <h1 id="sp-title" class="sp-title split" data-split>See threats. Close gaps. <span class="gradient-text">Stay ahead.</span></h1>
+          <p class="sp-lead">We monitor your network and devices, find the weak spots and lock your systems down, so an attack is caught early or never gets in at all.</p>
+          <div class="proj-actions">
+            <a class="btn btn--primary" href="#sp-areas">See what we do <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost" href="../contact.html">Book now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- White sheet: rolls in over the photo, narrow with rounded top corners at first,
+           full width at the top (script.js "Sheets"); then pinned while the statement
+           fills in word by word ([data-pin-track] + [data-scrub]) -->
+      <section class="pchallenge sp-sheet" aria-label="Why it matters" data-pin-track data-sheet>
+        <div class="pchallenge__stage">
+          <div class="container pchallenge__content">
+            <span class="eyebrow">Why it matters, even for small companies</span>
+            <p class="pchallenge__text" data-scrub>Attackers don't pick targets by size. They pick the easiest way in. One phishing email or one unpatched laptop can stop a small business for weeks, and the bill lands on you. <em>Being small is not protection.</em></p>
+            <span class="pchallenge__bar" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Photo band: the photo moves slower than the page (data-parallax) -->
+    <div class="sp-band" aria-hidden="true">
+      <img class="sp-band-img" src="../img/band-cyber.jpg" alt="" loading="lazy" decoding="async" data-parallax="0.22">
+    </div>
+
+    <!-- =====================================================
+         WHAT WE DO: the service's areas (navy). Keep the ids: links point to them.
+         ===================================================== -->
+    <section class="sp-areas" id="sp-areas" aria-labelledby="sp-areas-title">
+      <div class="sp-areas-inner">
+        <header class="sp-areas-head">
+          <span class="eyebrow" data-reveal="fade-right">What we do</span>
+          <h2 id="sp-areas-title" class="split" data-split>See threats early. Close the gaps before attackers find them.</h2>
+        </header>
+        <ol class="sp-areas-list">
+          <li class="sp-area" data-reveal="fade-up" id="threat-detection">
+            <span class="sp-area-num" aria-hidden="true">01</span>
+            <h3>Threat Detection</h3>
+            <p>We set up SIEM and EDR tools that spot attacks early, on your network and every device.</p>
+          </li>
+          <li class="sp-area" data-reveal="fade-up" id="network-security">
+            <span class="sp-area-num" aria-hidden="true">02</span>
+            <h3>Network Security</h3>
+            <p>Firewalls, network segmentation, and secure VPN access that keep intruders out.</p>
+          </li>
+          <li class="sp-area" data-reveal="fade-up" id="vulnerability-management">
+            <span class="sp-area-num" aria-hidden="true">03</span>
+            <h3>Vulnerability Management</h3>
+            <p>We scan your systems, find weak spots, and give you a clear plan to fix them.</p>
+          </li>
+          <li class="sp-area" data-reveal="fade-up" id="system-hardening">
+            <span class="sp-area-num" aria-hidden="true">04</span>
+            <h3>System Hardening</h3>
+            <p>Computers and servers locked down using proven CIS security standards.</p>
+          </li>
+          <li class="sp-area" data-reveal="fade-up" id="cloud-email-security">
+            <span class="sp-area-num" aria-hidden="true">05</span>
+            <h3>Cloud &amp; Email Security</h3>
+            <p>Microsoft 365 protection and email setup that stops phishing and spoofing.</p>
+          </li>
+          <li class="sp-area" data-reveal="fade-up" id="security-awareness">
+            <span class="sp-area-num" aria-hidden="true">06</span>
+            <h3>Security Awareness Training</h3>
+            <p>Training and phishing simulations that turn your team into your first line of defence.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         IN DETAIL: one block per area, its sub-services and what's included
+         ===================================================== -->
+    <section class="sp-details" aria-labelledby="sp-details-title">
+      <div class="sp-details-inner">
+        <span class="eyebrow" id="sp-details-title">In detail</span>
+        <article class="sp-detail" data-reveal="fade-up" id="threat-detection-details" aria-labelledby="threat-detection-details-title">
+          <header class="sp-detail-head">
+            <span class="sp-detail-num" aria-hidden="true">01</span>
+            <h2 id="threat-detection-details-title">Threat Detection</h2>
+          </header>
+          <div class="sp-detail-items">
+            <div class="sp-detail-item">
+              <h3>SIEM Deployment &amp; Tuning</h3>
+              <p>We collect the logs from your systems in one place and turn them into alerts that point to real attacks, not noise.</p>
+              <ul class="sp-detail-list">
+                <li>Log sources onboarded</li>
+                <li>Detection use cases for your setup</li>
+                <li>Alert tuning to cut false alarms</li>
+                <li>Dashboards and a health check</li>
+              </ul>
+            </div>
+            <div class="sp-detail-item">
+              <h3>EDR Deployment &amp; Tuning</h3>
+              <p>Endpoint protection on every laptop and server that spots and stops suspicious behaviour as it happens.</p>
+              <ul class="sp-detail-list">
+                <li>Rollout plan for all devices</li>
+                <li>Policy configuration and exclusions</li>
+                <li>Alert tuning</li>
+                <li>Response playbooks for your team</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="sp-detail" data-reveal="fade-up" id="network-security-details" aria-labelledby="network-security-details-title">
+          <header class="sp-detail-head">
+            <span class="sp-detail-num" aria-hidden="true">02</span>
+            <h2 id="network-security-details-title">Network Security</h2>
+          </header>
+          <div class="sp-detail-items">
+            <div class="sp-detail-item">
+              <h3>Network Segmentation &amp; Firewalls</h3>
+              <p>We split your network into zones, so one infected device can't reach everything else.</p>
+              <ul class="sp-detail-list">
+                <li>Zone design and VLANs</li>
+                <li>Firewall rule review and clean-up</li>
+                <li>Network documentation</li>
+              </ul>
+            </div>
+            <div class="sp-detail-item">
+              <h3>Secure Remote Access</h3>
+              <p>Safe access to company systems from anywhere, without leaving the door open.</p>
+              <ul class="sp-detail-list">
+                <li>VPN or zero-trust access setup</li>
+                <li>Multi-factor authentication</li>
+                <li>Device checks before access</li>
+                <li>Clear access policies</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="sp-detail" data-reveal="fade-up" id="vulnerability-management-details" aria-labelledby="vulnerability-management-details-title">
+          <header class="sp-detail-head">
+            <span class="sp-detail-num" aria-hidden="true">03</span>
+            <h2 id="vulnerability-management-details-title">Vulnerability Management</h2>
+          </header>
+          <div class="sp-detail-items">
+            <div class="sp-detail-item">
+              <h3>Vulnerability Scanning &amp; Prioritization</h3>
+              <p>Regular scans that find weak spots, ranked by real risk so you fix what matters first.</p>
+              <ul class="sp-detail-list">
+                <li>Scanner setup</li>
+                <li>Risk-based prioritisation</li>
+                <li>Monthly report</li>
+                <li>Remediation plan</li>
+              </ul>
+            </div>
+            <div class="sp-detail-item">
+              <h3>Security Posture Assessment</h3>
+              <p>A clear picture of where your security stands today and what to do next.</p>
+              <ul class="sp-detail-list">
+                <li>Review of your current setup</li>
+                <li>Gap analysis</li>
+                <li>Prioritised roadmap</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="sp-detail" data-reveal="fade-up" id="system-hardening-details" aria-labelledby="system-hardening-details-title">
+          <header class="sp-detail-head">
+            <span class="sp-detail-num" aria-hidden="true">04</span>
+            <h2 id="system-hardening-details-title">System Hardening</h2>
+          </header>
+          <div class="sp-detail-items">
+            <div class="sp-detail-item">
+              <h3>CIS Hardening (endpoints &amp; servers)</h3>
+              <p>Computers and servers locked down to proven CIS Benchmarks, so attackers have far less to work with.</p>
+              <ul class="sp-detail-list">
+                <li>CIS Benchmark baselines</li>
+                <li>Policies through Group Policy or Intune</li>
+                <li>Compliance report</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="sp-detail" data-reveal="fade-up" id="cloud-email-security-details" aria-labelledby="cloud-email-security-details-title">
+          <header class="sp-detail-head">
+            <span class="sp-detail-num" aria-hidden="true">05</span>
+            <h2 id="cloud-email-security-details-title">Cloud &amp; Email Security</h2>
+          </header>
+          <div class="sp-detail-items">
+            <div class="sp-detail-item">
+              <h3>Microsoft 365 Security</h3>
+              <p>Your Microsoft 365 tenant configured the secure way, from sign-ins to file sharing.</p>
+              <ul class="sp-detail-list">
+                <li>Secure Score review</li>
+                <li>Conditional Access and MFA</li>
+                <li>Defender settings</li>
+                <li>Sharing policies</li>
+              </ul>
+            </div>
+            <div class="sp-detail-item">
+              <h3>Email Security (SPF, DKIM, DMARC)</h3>
+              <p>Email set up so nobody can send mail in your name and phishing gets stopped at the door.</p>
+              <ul class="sp-detail-list">
+                <li>SPF, DKIM and DMARC records</li>
+                <li>DMARC monitoring up to full enforcement</li>
+                <li>Anti-phishing policies</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="sp-detail" data-reveal="fade-up" id="security-awareness-details" aria-labelledby="security-awareness-details-title">
+          <header class="sp-detail-head">
+            <span class="sp-detail-num" aria-hidden="true">06</span>
+            <h2 id="security-awareness-details-title">Security Awareness Training</h2>
+          </header>
+          <div class="sp-detail-items">
+            <div class="sp-detail-item">
+              <h3>Employee Security Training</h3>
+              <p>Short, practical sessions in plain language that show your team how real attacks look and what to do.</p>
+              <ul class="sp-detail-list">
+                <li>Live or online sessions</li>
+                <li>Phishing, passwords and safe browsing</li>
+                <li>Onboarding material for new hires</li>
+                <li>Attendance and progress report</li>
+              </ul>
+            </div>
+            <div class="sp-detail-item">
+              <h3>Phishing Simulations</h3>
+              <p>Realistic test emails that show who would click, followed by a quick lesson right when it matters.</p>
+              <ul class="sp-detail-list">
+                <li>Realistic phishing campaigns</li>
+                <li>Training right after a click</li>
+                <li>Results by team</li>
+                <li>Progress over time</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CTA
+         ===================================================== -->
+    <section class="container" id="cta">
+      <div class="cta glow-border glow-border--always" data-reveal="zoom">
+        <div class="orb orb--cyan" data-parallax="0.2" style="width:380px;height:380px;top:-160px;right:-100px"></div>
+        <div class="orb orb--teal" data-parallax="-0.2" style="width:340px;height:340px;bottom:-160px;left:-80px"></div>
+        <span class="eyebrow cta__eyebrow">Next step</span>
+        <h2>Not sure where to start?</h2>
+        <p>Book a free 30-minute Security Posture Check and get a clear picture of your biggest risks.</p>
+        <div class="cta__actions">
+          <a href="../contact.html" class="btn btn--primary">Book now <svg><use href="#i-arrow"/></svg></a>
+          <a href="../index.html#services" class="btn btn--ghost">Explore our services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="../index.html" class="logo">
+            <img class="logo__mark" src="../img/logo.png" alt="" width="347" height="400" />
+            <span>Vimentus</span>
+          </a>
+          <p>Secure, scalable technology for businesses that want to move faster. Planned, built and protected by one team.</p>
+          <a href="../contact.html" class="btn btn--primary btn--sm">Get a free assessment <svg><use href="#i-arrow"/></svg></a>
+          <div class="socials">
+            <a href="#" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="#" aria-label="X"><svg><use href="#i-x"/></svg></a>
+            <a href="#" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+          </div>
+        </div>
+
+        <nav class="footer__col" aria-label="Services">
+          <h4>Services</h4>
+          <a href="../services/cybersecurity.html">Cybersecurity</a>
+          <a href="../services/network-infrastructure.html">Network &amp; Infrastructure</a>
+          <a href="../services/web-development.html">Web Design &amp; Development</a>
+          <a href="../services/custom-software.html">Custom Software</a>
+        </nav>
+
+        <nav class="footer__col" aria-label="Our work">
+          <h4>Our work</h4>
+          <a href="../work/security-monitoring-wazuh.html">Security monitoring</a>
+          <a href="../work/gym-admin-portal-qr-access.html">Gym portal</a>
+          <a href="../work/landscaping-company-website.html">Landscaping website</a>
+          <a href="../work/segmented-network-asset-map.html">Network &amp; asset map</a>
+        </nav>
+
+        <nav class="footer__col" aria-label="Company">
+          <h4>Company</h4>
+          <a href="../about.html">About us</a>
+          <a href="../index.html#process">How we work</a>
+          <a href="../team.html">Our team</a>
+          <a href="../careers.html">Careers</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:info@vimentus.com">info@vimentus.com</a>
+          <a href="tel:+421948316331">+421 948 316 331</a>
+        </div>
+      </div>
+
+      <div class="footer__word" aria-hidden="true">vimentus</div>
+
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> Vimentus. All rights reserved.</span>
+        <nav class="footer__legal" aria-label="Legal">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms</a>
+          <a href="../cookies.html">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

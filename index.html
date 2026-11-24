@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vimentus — Secure, Scalable Technology Solutions</title>
+  <meta name="description" content="Cybersecurity, network & infrastructure, web design & development and custom software for growing businesses." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Hidden SVG icon sprite (reuse with <svg><use href="#i-name"/></svg>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"/></symbol>
+      <symbol id="i-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8l-2 2 2 2M17 8l2 2-2 2M13 7l-2 6"/></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+      <symbol id="i-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></symbol>
+      <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/><path d="M6.5 17A2.5 2.5 0 0 0 4 19.5 2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m1 6 7-4 8 4 7-4v16l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></symbol>
+      <symbol id="i-quote" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11c0-3.3 2.7-6 6-6v2c-2.2 0-4 1.8-4 4h4v8H4v-8zm10 0c0-3.3 2.7-6 6-6v2c-2.2 0-4 1.8-4 4h4v8h-6v-8z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="logo" aria-label="Vimentus home">
+        <img class="logo__mark" src="img/logo.png" alt="" width="347" height="400" />
+        <span>Vimentus</span>
+      </a>
+
+      <nav aria-label="Main">
+        <ul class="nav__menu" id="navMenu">
+
+          <!-- Services -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Services <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega mega--wide">
+              <div class="mega__grid">
+                <a href="services/cybersecurity.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-shield"/></svg></span>
+                  <span><span class="mega__title">Cybersecurity</span><span class="mega__desc">Audits, pentesting, SOC &amp; threat protection.</span></span>
+                </a>
+                <a href="services/network-infrastructure.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-network"/></svg></span>
+                  <span><span class="mega__title">Network &amp; Infrastructure</span><span class="mega__desc">Design, deployment and 24/7 monitoring.</span></span>
+                </a>
+                <div class="mega__feature">
+                  <div>
+                    <h4>Free security assessment</h4>
+                    <p>Find out where your business is exposed — in under a week.</p>
+                  </div>
+                  <a href="contact.html">Book now <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+                </div>
+                <a href="services/web-development.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-web"/></svg></span>
+                  <span><span class="mega__title">Web Design &amp; Development</span><span class="mega__desc">Fast, beautiful sites and web apps.</span></span>
+                </a>
+                <a href="services/custom-software.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-code"/></svg></span>
+                  <span><span class="mega__title">Custom Software</span><span class="mega__desc">Tailor-made tools built around your workflow.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Solutions -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Solutions <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega">
+              <div class="mega__grid">
+                <p class="mega__heading">By industry</p>
+                <a href="solutions/finance.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-bank"/></svg></span>
+                  <span><span class="mega__title">Finance</span><span class="mega__desc">Compliance-ready systems.</span></span>
+                </a>
+                <a href="solutions/healthcare.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-heart"/></svg></span>
+                  <span><span class="mega__title">Healthcare</span><span class="mega__desc">Protect patient data.</span></span>
+                </a>
+                <a href="solutions/ecommerce.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-cart"/></svg></span>
+                  <span><span class="mega__title">E-commerce</span><span class="mega__desc">Stores that scale.</span></span>
+                </a>
+                <a href="solutions/enterprise.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-building"/></svg></span>
+                  <span><span class="mega__title">Enterprise</span><span class="mega__desc">Modernise legacy IT.</span></span>
+                </a>
+                <p class="mega__heading">By need</p>
+                <a href="solutions/cloud-migration.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-cloud"/></svg></span>
+                  <span><span class="mega__title">Cloud Migration</span><span class="mega__desc">Move safely to the cloud.</span></span>
+                </a>
+                <a href="solutions/startups.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-rocket"/></svg></span>
+                  <span><span class="mega__title">Startups</span><span class="mega__desc">From MVP to launch.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Company -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Company <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega">
+              <div class="mega__grid">
+                <a href="about.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-info"/></svg></span>
+                  <span><span class="mega__title">About Us</span><span class="mega__desc">Our story and mission.</span></span>
+                </a>
+                <a href="team.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-users"/></svg></span>
+                  <span><span class="mega__title">Our Team</span><span class="mega__desc">Meet the experts.</span></span>
+                </a>
+                <a href="careers.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-briefcase"/></svg></span>
+                  <span><span class="mega__title">Careers</span><span class="mega__desc">Join us — we're hiring.</span></span>
+                </a>
+                <a href="blog.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-book"/></svg></span>
+                  <span><span class="mega__title">Blog &amp; Insights</span><span class="mega__desc">News, guides and research.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Our work -->
+          <li class="nav__item has-mega">
+            <button class="nav__link" aria-expanded="false">Our work <svg class="chev"><use href="#i-chev"/></svg></button>
+            <div class="mega mega--wide">
+              <div class="mega__grid">
+                <a href="work/security-monitoring-wazuh.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-shield"/></svg></span>
+                  <span><span class="mega__title">Security monitoring with Wazuh</span><span class="mega__desc">Open-source SIEM, EDR and network watch.</span></span>
+                </a>
+                <a href="work/gym-admin-portal-qr-access.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-code"/></svg></span>
+                  <span><span class="mega__title">Gym portal with QR access</span><span class="mega__desc">Members get in with a code on their phone.</span></span>
+                </a>
+                <div class="mega__feature">
+                  <div>
+                    <h4>See all our work</h4>
+                    <p>Real projects, planned, built and secured by one team.</p>
+                  </div>
+                  <a href="index.html#work">View projects <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+                </div>
+                <a href="work/landscaping-company-website.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-web"/></svg></span>
+                  <span><span class="mega__title">Landscaping company website</span><span class="mega__desc">3D, parallax and fast on any device.</span></span>
+                </a>
+                <a href="work/segmented-network-asset-map.html" class="mega__link">
+                  <span class="mega__icon"><svg><use href="#i-network"/></svg></span>
+                  <span><span class="mega__title">Segmented network &amp; asset map</span><span class="mega__desc">DMZ, protected zones, all in NetBox.</span></span>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="contact.html" class="btn btn--primary btn--sm">Get a quote <svg><use href="#i-arrow"/></svg></a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================
+         OPENING: hero + services ticker fill the first screen; on scroll the whole scene
+         closes into a hexagon, which lands in the middle of What we do and splits into
+         the four services (styles/JS: "Opening"). Without JS / reduced motion: just the
+         hero and the ticker.
+         ===================================================== -->
+    <div class="open" data-open>
+    <div class="open__stage">
+    <div class="open__scene hex-clip">
+    <!-- =====================================================
+         HERO: real stock clips crossfading behind the text under a navy
+         tint (script.js "Hero videos"), centred headline + buttons.
+         data-show = how long a clip stays on screen in ms (default 4000).
+         Only the first clip loads with the page; the rest load just before
+         they're needed.
+         ===================================================== -->
+    <section id="hero" class="vhero" aria-labelledby="hero-title">
+      <div class="vhero__videos" data-hero-videos aria-hidden="true">
+        <video class="vhero__video is-active" src="video/hero-city.mp4" muted loop playsinline preload="auto" tabindex="-1"></video>
+        <video class="vhero__video" data-src="video/hero-network.mp4" data-show="6500" muted loop playsinline preload="none" tabindex="-1"></video>
+        <video class="vhero__video" data-src="video/hero-cyber.mp4" muted loop playsinline preload="none" tabindex="-1"></video>
+        <video class="vhero__video" data-src="video/hero-hardware.mp4" muted loop playsinline preload="none" tabindex="-1"></video>
+      </div>
+      <div class="vhero__shade" aria-hidden="true"></div>
+
+      <div class="vhero__inner">
+        <div class="vhero__content">
+          <h1 id="hero-title" class="vhero__title">One partner for your whole stack, <span class="gradient-text">with security built in.</span></h1>
+          <p class="vhero__sub">Vimentus brings cybersecurity, network &amp; infrastructure, web design and custom software under one roof, so the systems your business runs on are planned, built and protected by the same team.</p>
+          <div class="vhero__actions">
+            <a class="btn btn--primary" href="contact.html">Get a free assessment <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost vhero__ghost" href="#services">Explore our services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SERVICES WE COVER: navy ticker straight under the hero (same
+         background, so the two read as one band). The list is there twice
+         so the loop is seamless; the copy is hidden from screen readers.
+         ===================================================== -->
+    <section class="trust" aria-labelledby="trust-title">
+      <h2 class="trust__title" id="trust-title">Services we cover</h2>
+      <div class="trust__marquee">
+        <ul class="trust__track">
+          <li>SIEM</li><li>AWS &amp; Azure</li><li>Websites</li><li>Client portals</li><li>XDR</li><li>Active Directory &amp; Entra ID</li><li>Technical SEO</li><li>Email security</li>
+          <li>NDR</li><li>Monitoring</li><li>Dashboards</li><li>Firewalls &amp; VPN</li><li>EDR</li><li>Infrastructure as code</li><li>Microsoft 365 security</li><li>Vulnerability scanning</li>
+        </ul>
+        <ul class="trust__track" aria-hidden="true">
+          <li>SIEM</li><li>AWS &amp; Azure</li><li>Websites</li><li>Client portals</li><li>XDR</li><li>Active Directory &amp; Entra ID</li><li>Technical SEO</li><li>Email security</li>
+          <li>NDR</li><li>Monitoring</li><li>Dashboards</li><li>Firewalls &amp; VPN</li><li>EDR</li><li>Infrastructure as code</li><li>Microsoft 365 security</li><li>Vulnerability scanning</li>
+        </ul>
+      </div>
+    </section>
+    </div><!-- /.open__scene -->
+    <svg class="open__rim hex-rim" aria-hidden="true"><g><polygon style="--i:0" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:1" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:2" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:3" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:4" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:5" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:6" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:7" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:8" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:9" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:10" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:11" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:12" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:13" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/></g></svg>
+    </div>
+    </div>
+
+    <!-- =====================================================
+         WHAT WE DO — pinned expanding photo panels (styles/JS: "Services panels")
+         The section pins; as you scroll, one panel at a time opens up (the others
+         shrink to strips), its photo zooms and its content slides in. Clicking a
+         strip jumps to it. Without JS / reduced motion: a plain grid of cards.
+         ===================================================== -->
+    <section class="svc" aria-labelledby="svc-title" data-svc style="--n: 4">
+      <span class="svc__anchor" id="services"></span><!-- links land where the panels are open -->
+      <div class="svc__stage">
+        <header class="svc__head">
+          <div>
+            <span class="eyebrow">What we do</span>
+            <h2 id="svc-title">Four services. <span class="gradient-text">One</span> trusted partner.</h2>
+          </div>
+          <p>Everything your business needs to stay secure, connected and ahead of the competition, delivered by one dedicated team.</p>
+        </header>
+
+        <ol class="svc__panels">
+          <!-- 01 -->
+          <li class="svc__panel" data-svc-panel>
+            <img class="svc__img" src="img/cyber-code.jpg" alt="Silhouette of a programmer in a dark room reading lines of code on a monitor" fetchpriority="low" decoding="async">
+            <span class="svc__tab" aria-hidden="true"><i class="svc__hex"><svg><use href="#i-shield"/></svg></i><span>Cybersecurity</span></span>
+            <div class="svc__body">
+              <span class="svc__id"><i class="svc__hex"><svg><use href="#i-shield"/></svg></i><span><b>Cybersecurity</b><em>Detect, harden, recover</em></span></span>
+              <h3>See threats early. Close the gaps before attackers find them.</h3>
+              <p>We monitor your network and devices, find the weak spots and lock your systems down, so an attack is caught early or never gets in at all.</p>
+              <ul class="svc__list">
+                <li><a href="services/cybersecurity.html#threat-detection"><b>Threat Detection</b><span>SIEM and EDR that spot attacks early.</span></a></li>
+                <li><a href="services/cybersecurity.html#vulnerability-management"><b>Vulnerability Management</b><span>Find weak spots, get a clear fix plan.</span></a></li>
+                <li><a href="services/cybersecurity.html#system-hardening"><b>System Hardening</b><span>Systems locked down to CIS standards.</span></a></li>
+                <li><a href="services/cybersecurity.html#security-awareness"><b>Security Awareness Training</b><span>Teach your team to spot attacks.</span></a></li>
+              </ul>
+              <a class="btn btn--primary" href="services/cybersecurity.html">Explore Cybersecurity <svg><use href="#i-arrow"/></svg></a>
+            </div>
+            <span class="svc__progress" aria-hidden="true"><i></i></span>
+          </li>
+
+          <!-- 02 -->
+          <li class="svc__panel" data-svc-panel>
+            <img class="svc__img" src="img/datacenter-dark.jpg" alt="Engineer with a tablet in a dimly lit data centre aisle beside glowing server racks" fetchpriority="low" decoding="async">
+            <span class="svc__tab" aria-hidden="true"><i class="svc__hex"><svg><use href="#i-network"/></svg></i><span>Infrastructure</span></span>
+            <div class="svc__body">
+              <span class="svc__id"><i class="svc__hex"><svg><use href="#i-network"/></svg></i><span><b>Infrastructure</b><em>Networks, servers, cloud</em></span></span>
+              <h3>Networks, servers and cloud that simply keep running.</h3>
+              <p>From the office network to AWS and Azure, we design, build and look after the infrastructure your business depends on, documented and secure by design.</p>
+              <ul class="svc__list">
+                <li><a href="services/network-infrastructure.html#cloud-servers"><b>Cloud &amp; Servers</b><span>AWS, Azure, migrations and servers.</span></a></li>
+                <li><a href="services/network-infrastructure.html#identity-access"><b>Identity &amp; Access</b><span>AD and Entra ID with the right access.</span></a></li>
+                <li><a href="services/network-infrastructure.html#monitoring-visibility"><b>Monitoring &amp; Visibility</b><span>Monitoring, logging and network docs.</span></a></li>
+                <li><a href="services/network-infrastructure.html#automation"><b>Automation</b><span>Scripts and IaC for repetitive work.</span></a></li>
+              </ul>
+              <a class="btn btn--primary" href="services/network-infrastructure.html">Explore Infrastructure <svg><use href="#i-arrow"/></svg></a>
+            </div>
+            <span class="svc__progress" aria-hidden="true"><i></i></span>
+          </li>
+
+          <!-- 03 -->
+          <li class="svc__panel" data-svc-panel>
+            <img class="svc__img" src="img/web-desk.jpg" alt="Designer working at night at a desk with two glowing monitors in a room lit in teal" fetchpriority="low" decoding="async">
+            <span class="svc__tab" aria-hidden="true"><i class="svc__hex"><svg><use href="#i-web"/></svg></i><span>Web Development</span></span>
+            <div class="svc__body">
+              <span class="svc__id"><i class="svc__hex"><svg><use href="#i-web"/></svg></i><span><b>Web Development</b><em>Sites that win clients</em></span></span>
+              <h3>Websites that look sharp, load fast and win clients.</h3>
+              <p>We design and build websites that turn visitors into enquiries, with motion that stands out, strong technical SEO and secure hosting that is looked after.</p>
+              <ul class="svc__list">
+                <li><a href="services/web-development.html#websites"><b>Websites</b><span>Sites that turn visitors into clients.</span></a></li>
+                <li><a href="services/web-development.html#3d-motion"><b>3D &amp; Motion</b><span>3D and animation that stand out.</span></a></li>
+                <li><a href="services/web-development.html#performance"><b>Performance</b><span>Faster load times and technical SEO.</span></a></li>
+                <li><a href="services/web-development.html#security-care"><b>Security &amp; Care</b><span>Secure hosting, updates and backups.</span></a></li>
+              </ul>
+              <a class="btn btn--primary" href="services/web-development.html">Explore Web Development <svg><use href="#i-arrow"/></svg></a>
+            </div>
+            <span class="svc__progress" aria-hidden="true"><i></i></span>
+          </li>
+
+          <!-- 04 -->
+          <li class="svc__panel" data-svc-panel>
+            <img class="svc__img" src="img/software.jpg" alt="Laptop showing application code" fetchpriority="low" decoding="async">
+            <span class="svc__tab" aria-hidden="true"><i class="svc__hex"><svg><use href="#i-code"/></svg></i><span>Custom Software</span></span>
+            <div class="svc__body">
+              <span class="svc__id"><i class="svc__hex"><svg><use href="#i-code"/></svg></i><span><b>Custom Software</b><em>Portals, booking, dashboards</em></span></span>
+              <h3>Software built around how your business actually works.</h3>
+              <p>Client portals, booking systems and dashboards made for your processes, connected to the tools you already use and secure from the first line of code.</p>
+              <ul class="svc__list">
+                <li><a href="services/custom-software.html#client-portals"><b>Client Portals &amp; Web Apps</b><span>Private login areas for your clients.</span></a></li>
+                <li><a href="services/custom-software.html#booking-ordering"><b>Booking &amp; Ordering</b><span>Customers book, order and pay online.</span></a></li>
+                <li><a href="services/custom-software.html#dashboards"><b>Dashboards &amp; Admin Panels</b><span>Your numbers and content in one place.</span></a></li>
+                <li><a href="services/custom-software.html#automation-integrations"><b>Automation &amp; Integrations</b><span>Website, CRM and payments, connected.</span></a></li>
+              </ul>
+              <a class="btn btn--primary" href="services/custom-software.html">Explore Custom Software <svg><use href="#i-arrow"/></svg></a>
+            </div>
+            <span class="svc__progress" aria-hidden="true"><i></i></span>
+          </li>
+        </ol>
+
+        <!-- Exit into "Our mission": after the last panel the panels become hexagon photo
+             tiles that slide together into one, and this navy hexagon iris opens out of it
+             until it fills the screen (styles/JS: "Services panels", exit) -->
+        <div class="svc__iris hex-clip" aria-hidden="true"></div>
+        <svg class="svc__rim hex-rim" aria-hidden="true"><g><polygon style="--i:0" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:1" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:2" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:3" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:4" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:5" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:6" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:7" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:8" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:9" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:10" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:11" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:12" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:13" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/></g></svg>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         STATEMENT (Our mission) — continues the iris that opened at the end of
+         "What we do": already navy, its sentence rises in, the words light up,
+         then the hexagon hands off onto the Why Vimentus core (styles/JS: "Iris").
+         Mark key words with <em>, add icon chips with .statement__chip
+         ===================================================== -->
+    <section class="statement" aria-label="Our mission" data-iris>
+      <div class="statement__stage">
+      <div class="statement__iris" aria-hidden="true">
+        <picture><source media="(max-width: 680px)" srcset="img/mission-network-phone.jpg"><img class="statement__photo" src="img/mission-network.jpg" alt="" loading="lazy" decoding="async"></picture>
+        <span class="statement__shade"></span>
+        <svg class="statement__ring" viewBox="-100 -100 200 200"><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50" pathLength="600"/></svg>
+        <svg class="statement__ring statement__ring--2" viewBox="-100 -100 200 200"><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon class="statement__light" points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50" pathLength="600"/></svg>
+      </div>
+      <div class="container statement__content">
+        <span class="eyebrow">Our mission</span>
+        <p class="statement__text" data-scrub>
+          We help growing companies stay <em>secure</em> <span class="statement__chip"><svg><use href="#i-shield"/></svg></span>
+          <em>connected</em> <span class="statement__chip statement__chip--dark"><svg><use href="#i-network"/></svg></span>
+          and ahead of the curve, with one team that designs <span class="statement__chip"><svg><use href="#i-web"/></svg></span>
+          builds <span class="statement__chip statement__chip--dark"><svg><use href="#i-code"/></svg></span>
+          and protects the technology they rely on <em>every day.</em>
+        </p>
+      </div>
+      </div><!-- /.statement__stage -->
+    </section>
+
+    <!-- Iris hand-off: once the statement unpins, this fixed navy hexagon shrinks onto
+         the "One team" core in Why Vimentus (styles/JS: "Iris hand-off") -->
+    <div class="iris-transfer hex-clip" aria-hidden="true"></div>
+    <svg class="iris-transfer__rim hex-rim" aria-hidden="true"><g><polygon style="--i:0" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:1" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:2" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:3" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:4" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:5" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:6" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:7" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:8" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:9" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:10" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:11" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:12" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:13" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/></g></svg>
+
+    <!-- =====================================================
+         ABOUT / WHY US (orbit visual)
+         ===================================================== -->
+    <section class="section section--alt section--dots" id="about">
+      <div class="about__stage"><!-- pinned full screen while the iris lands on the core -->
+      <div class="container about__inner">
+        <div class="orbit">
+          <div class="orbit__ring orbit__ring--1">
+            <svg class="orbit__hex" viewBox="-100 -100 200 200" aria-hidden="true"><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/></svg>
+            <span class="orbit__path"><span class="orbit__planet"><svg><use href="#i-shield"/></svg></span></span>
+            <span class="orbit__path orbit__path--bottom"><span class="orbit__planet orbit__planet--dark"><svg><use href="#i-code"/></svg></span></span>
+          </div>
+          <div class="orbit__ring orbit__ring--2">
+            <svg class="orbit__hex" viewBox="-100 -100 200 200" aria-hidden="true"><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/></svg>
+            <span class="orbit__path orbit__path--left"><span class="orbit__planet orbit__planet--dark"><svg><use href="#i-network"/></svg></span></span>
+            <span class="orbit__path orbit__path--right"><span class="orbit__planet"><svg><use href="#i-web"/></svg></span></span>
+          </div>
+          <div class="orbit__core">
+            <!-- Company logo, outline only: it draws itself here, grows into "How we work" and is filled in there, step by step -->
+            <div><svg class="orbit__logo" viewBox="-843 -973 1686 1946" role="img" aria-label="Vimentus"><polygon points="-842.5,-174 -684.5,-77 -592.5,77 -592.5,342 -345.5,484 -76.5,929 -842.5,487"/><polygon points="842.5,-174 685.5,-77 592.5,77 592.5,342 345.5,484 165.5,782 -0.5,973 842.5,487"/><polygon points="-0.5,-973 -842.5,-487 -587.5,-345 -0.5,-684"/><polygon points="-0.5,-973 842.5,-487 587.5,-345 -0.5,-684"/><polygon points="842.5,-487 442.5,-264 -0.5,498 165.5,782 685.5,-77 842.5,-174"/><polygon points="-842.5,-487 -442.5,-264 165.5,782 -0.5,973 -76.5,929 -684.5,-77 -842.5,-174"/></svg></div>
+          </div>
+          <div class="orbit__card orbit__card--a" data-parallax="-0.15">
+            <span class="glass__icon"><svg><use href="#i-users"/></svg></span>
+            <div><strong>98%</strong><small>Client satisfaction</small></div>
+          </div>
+          <div class="orbit__card orbit__card--b" data-parallax="0.15">
+            <span class="pulse"></span>
+            <div><strong>24/7</strong><small>Live monitoring</small></div>
+          </div>
+        </div>
+
+        <div class="about__text">
+          <span class="eyebrow" data-reveal="fade-left">Why Vimentus</span>
+          <h2 class="split about__title" data-split>Built on expertise, <span class="gradient-text">driven</span> by results</h2>
+          <p class="about__lead" data-reveal="fade-up">We combine deep technical knowledge with a genuine understanding of business, so every solution we deliver is secure, scalable and built to last.</p>
+
+          <div class="features">
+            <div class="feature" data-reveal="fade-left" data-delay="100">
+              <span class="feature__icon"><svg><use href="#i-users"/></svg></span>
+              <div><h4>Certified experts</h4><p>Engineers certified across leading security, cloud and networking platforms.</p></div>
+            </div>
+            <div class="feature" data-reveal="fade-left" data-delay="200">
+              <span class="feature__icon"><svg><use href="#i-clock"/></svg></span>
+              <div><h4>Always-on support</h4><p>Round-the-clock monitoring and a team that answers when you call.</p></div>
+            </div>
+            <div class="feature" data-reveal="fade-left" data-delay="300">
+              <span class="feature__icon"><svg><use href="#i-bolt"/></svg></span>
+              <div><h4>Fast delivery</h4><p>Agile processes that get you from idea to production in weeks, not months.</p></div>
+            </div>
+          </div>
+
+          <a href="about.html" class="btn btn--dark" data-reveal="fade-up">More about us <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+
+        <!-- =====================================================
+             HOW WE WORK — grows out of Why Vimentus in the same pinned stage
+             (styles/JS: "FLOW"). The outlined logo in the orbit's centre grows into place;
+             each step fills in its facets (data-piece = step index), until the
+             logo is whole. The orbit's planets become the steps' markers
+             (data-from = which planet, in page order).
+             Without JS / reduced motion: the whole logo beside the four open steps.
+             ===================================================== -->
+        <div class="flow" id="process" aria-labelledby="flow-title">
+          <!-- the dark that blooms out of the logo core -->
+          <div class="flow__bloom hex-clip" aria-hidden="true"></div>
+          <svg class="flow__ripple" viewBox="-100 -100 200 200" aria-hidden="true"><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/></svg>
+          <svg class="flow__ripple flow__ripple--2" viewBox="-100 -100 200 200" aria-hidden="true"><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/></svg>
+
+          <div class="flow__inner">
+            <div class="flow__fig" aria-hidden="true">
+              <span class="flow__halo"></span><!-- the glow once the logo is whole -->
+              <svg viewBox="-1060 -1220 2120 2440">
+                <polygon class="flow__ring" points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/>
+                <polygon class="flow__ring flow__ring--on" pathLength="100" points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/>
+                <g class="flow__aura"><polygon points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/><polygon points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/><polygon points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/><polygon points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/></g>
+                <polygon class="flow__wave" points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/>
+                <g class="flow__ghost"><polygon data-piece="3" points="-842.5,-174 -684.5,-77 -592.5,77 -592.5,342 -345.5,484 -76.5,929 -842.5,487"/><polygon data-piece="3" points="842.5,-174 685.5,-77 592.5,77 592.5,342 345.5,484 165.5,782 -0.5,973 842.5,487"/><polygon data-piece="2" points="-0.5,-973 -842.5,-487 -587.5,-345 -0.5,-684"/><polygon data-piece="2" points="-0.5,-973 842.5,-487 587.5,-345 -0.5,-684"/><polygon data-piece="1" points="842.5,-487 442.5,-264 -0.5,498 165.5,782 685.5,-77 842.5,-174"/><polygon data-piece="0" points="-842.5,-487 -442.5,-264 165.5,782 -0.5,973 -76.5,929 -684.5,-77 -842.5,-174"/></g>
+                <g class="flow__facets">
+                <polygon data-piece="3" style="--dx:-1;--dy:0.6" fill="#00a4c1" points="-842.5,-174 -684.5,-77 -592.5,77 -592.5,342 -345.5,484 -76.5,929 -842.5,487"/>
+                <polygon data-piece="3" style="--dx:1;--dy:0.6" fill="#06b6d4" points="842.5,-174 685.5,-77 592.5,77 592.5,342 345.5,484 165.5,782 -0.5,973 842.5,487"/>
+                <polygon data-piece="2" style="--dx:-0.5;--dy:-1" fill="#00a4c1" points="-0.5,-973 -842.5,-487 -587.5,-345 -0.5,-684"/>
+                <polygon data-piece="2" style="--dx:0.5;--dy:-1" fill="#06b6d4" points="-0.5,-973 842.5,-487 587.5,-345 -0.5,-684"/>
+                <polygon data-piece="1" style="--dx:1;--dy:-0.45" fill="#00a4c1" points="842.5,-487 442.5,-264 -0.5,498 165.5,782 685.5,-77 842.5,-174"/>
+                <polygon data-piece="0" style="--dx:-1;--dy:-0.45" fill="#06b6d4" points="-842.5,-487 -442.5,-264 165.5,782 -0.5,973 -76.5,929 -684.5,-77 -842.5,-174"/>
+                </g>
+                <g class="flow__shine"><polygon points="-842.5,-174 -684.5,-77 -592.5,77 -592.5,342 -345.5,484 -76.5,929 -842.5,487"/><polygon points="842.5,-174 685.5,-77 592.5,77 592.5,342 345.5,484 165.5,782 -0.5,973 842.5,487"/><polygon points="-0.5,-973 -842.5,-487 -587.5,-345 -0.5,-684"/><polygon points="-0.5,-973 842.5,-487 587.5,-345 -0.5,-684"/><polygon points="842.5,-487 442.5,-264 -0.5,498 165.5,782 685.5,-77 842.5,-174"/><polygon points="-842.5,-487 -442.5,-264 165.5,782 -0.5,973 -76.5,929 -684.5,-77 -842.5,-174"/></g>
+                <g class="flow__count"><text y="-20">01</text><text y="-20">02</text><text y="-20">03</text><text y="-20">04</text></g>
+              </svg>
+            </div>
+
+            <div class="flow__main">
+              <header class="flow__head">
+                <span class="eyebrow">How we work</span>
+                <h2 id="flow-title">From first call to fully protected, <span class="gradient-text">in four steps</span></h2>
+                <p>A simple, predictable process. You always know what happens next, what it costs and who is responsible.</p>
+              </header>
+
+              <div class="flow__track">
+                <span class="flow__line" aria-hidden="true"><i></i></span>
+                <ol class="flow__steps">
+                <li class="flow__step" data-flow-step>
+                  <span class="flow__node" data-from="0" aria-hidden="true"><svg class="flow__from"><use href="#i-shield"/></svg><svg class="flow__to"><use href="#i-search"/></svg></span>
+                  <div class="flow__body">
+                    <h3><span class="flow__num">01</span>Discover &amp; assess</h3>
+                    <div class="flow__more"><div>
+                      <p>We learn how your business runs, review your systems and map the real risks and opportunities, before recommending anything.</p>
+                      <ul class="flow__checks"><li>Free consultation</li><li>Systems &amp; security audit</li><li>Risk report</li></ul>
+                    </div></div>
+                  </div>
+                </li>
+                <li class="flow__step" data-flow-step>
+                  <span class="flow__node flow__node--dark" data-from="2" aria-hidden="true"><svg class="flow__from"><use href="#i-network"/></svg><svg class="flow__to"><use href="#i-map"/></svg></span>
+                  <div class="flow__body">
+                    <h3><span class="flow__num">02</span>Plan &amp; design</h3>
+                    <div class="flow__more"><div>
+                      <p>A written plan in plain language, with scope, timeline and a fixed price agreed up front, and the work prioritised by impact.</p>
+                      <ul class="flow__checks"><li>Roadmap</li><li>Architecture</li><li>Fixed quote</li></ul>
+                    </div></div>
+                  </div>
+                </li>
+                <li class="flow__step" data-flow-step>
+                  <span class="flow__node flow__node--dark" data-from="1" aria-hidden="true"><svg class="flow__from"><use href="#i-code"/></svg><svg class="flow__to"><use href="#i-code"/></svg></span>
+                  <div class="flow__body">
+                    <h3><span class="flow__num">03</span>Build</h3>
+                    <div class="flow__more"><div>
+                      <p>Our engineers deliver with minimal disruption, with security built in from the first day, not bolted on at the end.</p>
+                      <ul class="flow__checks"><li>Agile sprints</li><li>Security built in</li><li>Thorough testing</li></ul>
+                    </div></div>
+                  </div>
+                </li>
+                <li class="flow__step" data-flow-step>
+                  <span class="flow__node" data-from="3" aria-hidden="true"><svg class="flow__from"><use href="#i-web"/></svg><svg class="flow__to"><use href="#i-shield"/></svg></span>
+                  <div class="flow__body">
+                    <h3><span class="flow__num">04</span>Protect &amp; support</h3>
+                    <div class="flow__more"><div>
+                      <p>We launch, monitor and keep improving, so your systems stay fast and secure as you grow.</p>
+                      <ul class="flow__checks"><li>Smooth go-live</li><li>24/7 monitoring</li><li>Ongoing support</li></ul>
+                    </div></div>
+                  </div>
+                </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.about__stage -->
+    </section>
+
+    <!-- =====================================================
+         OUR WORK → TESTIMONIALS → CTA — one pinned scene (styles/JS: "Works")
+         Our work is a flight: through the finished logo of "How we work" into a tunnel of
+         hexagons, where the heading and then each project come out of the distance, stop in
+         front of you and pass by. The light at the end is the testimonials; their photo
+         hexagon then grows into the CTA, which flows into the footer.
+         Without JS / reduced motion: plain sections, one under another.
+         ===================================================== -->
+    <section class="works" aria-labelledby="works-title" data-works>
+      <span class="works__anchor" id="work"></span>
+      <div class="works__stage">
+        <div class="works__bg" aria-hidden="true"></div>
+        <svg class="works__tunnel" aria-hidden="true"><g><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/><polygon points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"/></g></svg>
+
+        <div class="works__planes">
+          <header class="works__intro">
+            <span class="eyebrow">Our work</span>
+            <h2 id="works-title">The kind of projects <span class="gradient-text">we take on</span></h2>
+            <p>A few of the projects we have built for companies, from security monitoring to custom software. Each one planned, built and secured by the same team.</p>
+          </header>
+          <ol class="works__list">
+            <!-- 01 -->
+            <li class="wplane" data-wproj>
+              <div class="wplane__in">
+                <a class="work-shot" href="work/security-monitoring-wazuh.html" tabindex="-1" aria-hidden="true">
+              <span class="work-window">
+                <span class="work-tag">Cybersecurity</span>
+                <span class="con con--wz" aria-hidden="true"><span class="con__ui">
+                  <span class="wz-top"><svg class="ci wz-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><b class="wz-logo">wazuh<em>.</em></b><span class="wz-crumb">Threat Hunting</span><span class="wz-tabs"><span class="is-on">Dashboard</span><span>Events</span></span><span class="wz-live"><i></i>Live</span><span class="wz-time"><svg class="ci" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M12 7v5l3.5 2"/></svg>Last 24 hours</span><span class="wz-btn"><svg class="ci" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6"/></svg><em>Refresh</em></span></span>
+                  <span class="wz-body">
+                    <span class="wz-side"><span><svg class="ci" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V20h14V9.5M10 20v-6h4v6"/></svg>Overview</span><span class=is-on><svg class="ci" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/></svg>Threat Hunting</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M8 8a4 4 0 0 1 8 0v6a4 4 0 0 1-8 0zM4 8l4 2M20 8l-4 2M3 14h5M16 14h5M5 20l3.5-3M19 20l-3.5-3"/></svg>Vulnerabilities</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4"/></svg>File Integrity</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6"/></svg>MITRE ATT&amp;CK</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compliance</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg>Agents</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Settings</span></span>
+                    <span class="wz-main">
+                      <span class="wz-kpis">
+                        <span class="wz-kpi"><small>Total alerts</small><b>18,<span class="wz-tick"></span></b><svg viewBox="0 0 100 28" preserveAspectRatio="none"><path d="M0 22 12 18 24 20 36 12 48 15 60 8 72 11 84 5 100 7"/></svg></span>
+                        <span class="wz-kpi wz-kpi--red"><small>Level 12 or above</small><b>412</b><svg viewBox="0 0 100 28" preserveAspectRatio="none"><path d="M0 20 14 21 28 16 42 19 56 10 70 14 84 9 100 12"/></svg></span>
+                        <span class="wz-kpi wz-kpi--amber"><small>Auth. failures</small><b>2,931</b><svg viewBox="0 0 100 28" preserveAspectRatio="none"><path d="M0 14 14 18 28 10 42 15 56 13 70 20 84 12 100 16"/></svg></span>
+                        <span class="wz-kpi wz-kpi--green"><small>Auth. successes</small><b>9,804</b><svg viewBox="0 0 100 28" preserveAspectRatio="none"><path d="M0 24 14 20 28 21 42 14 56 16 70 9 84 10 100 4"/></svg></span>
+                      </span>
+                      <span class="wz-mid">
+                        <span class="wz-panel wz-chart"><small>Alerts over time, top 5 agents</small><span class="wz-plot"><span class="wz-y"><i>900</i><i>600</i><i>300</i><i>0</i></span><span class="wz-bars"><span class="wz-bar" style="height:34%"><i style="flex:6.0;background:#3ba99c"></i><i style="flex:3.9;background:#4f86d6"></i><i style="flex:3.7;background:#e0668f"></i><i style="flex:1.7;background:#35c3dc"></i><i style="flex:1.8;background:#e3b34b"></i></span><span class="wz-bar" style="height:41%"><i style="flex:6.1;background:#3ba99c"></i><i style="flex:3.6;background:#4f86d6"></i><i style="flex:3.4;background:#e0668f"></i><i style="flex:1.7;background:#35c3dc"></i><i style="flex:1.7;background:#e3b34b"></i></span><span class="wz-bar" style="height:38%"><i style="flex:5.2;background:#3ba99c"></i><i style="flex:3.7;background:#4f86d6"></i><i style="flex:3.2;background:#e0668f"></i><i style="flex:2.9;background:#35c3dc"></i><i style="flex:1.3;background:#e3b34b"></i></span><span class="wz-bar" style="height:52%"><i style="flex:5.7;background:#3ba99c"></i><i style="flex:5.1;background:#4f86d6"></i><i style="flex:4.3;background:#e0668f"></i><i style="flex:2.5;background:#35c3dc"></i><i style="flex:1.7;background:#e3b34b"></i></span><span class="wz-bar" style="height:47%"><i style="flex:7.9;background:#3ba99c"></i><i style="flex:3.6;background:#4f86d6"></i><i style="flex:4.1;background:#e0668f"></i><i style="flex:2.1;background:#35c3dc"></i><i style="flex:1.4;background:#e3b34b"></i></span><span class="wz-bar" style="height:61%"><i style="flex:5.4;background:#3ba99c"></i><i style="flex:4.3;background:#4f86d6"></i><i style="flex:4.0;background:#e0668f"></i><i style="flex:1.9;background:#35c3dc"></i><i style="flex:1.9;background:#e3b34b"></i></span><span class="wz-bar" style="height:55%"><i style="flex:6.9;background:#3ba99c"></i><i style="flex:4.4;background:#4f86d6"></i><i style="flex:3.5;background:#e0668f"></i><i style="flex:1.7;background:#35c3dc"></i><i style="flex:1.3;background:#e3b34b"></i></span><span class="wz-bar" style="height:70%"><i style="flex:5.6;background:#3ba99c"></i><i style="flex:5.2;background:#4f86d6"></i><i style="flex:3.3;background:#e0668f"></i><i style="flex:2.1;background:#35c3dc"></i><i style="flex:1.9;background:#e3b34b"></i></span><span class="wz-bar" style="height:58%"><i style="flex:6.4;background:#3ba99c"></i><i style="flex:4.2;background:#4f86d6"></i><i style="flex:4.0;background:#e0668f"></i><i style="flex:2.7;background:#35c3dc"></i><i style="flex:1.5;background:#e3b34b"></i></span><span class="wz-bar" style="height:66%"><i style="flex:6.7;background:#3ba99c"></i><i style="flex:4.8;background:#4f86d6"></i><i style="flex:4.2;background:#e0668f"></i><i style="flex:2.8;background:#35c3dc"></i><i style="flex:1.5;background:#e3b34b"></i></span><span class="wz-bar" style="height:82%"><i style="flex:7.9;background:#3ba99c"></i><i style="flex:3.8;background:#4f86d6"></i><i style="flex:3.2;background:#e0668f"></i><i style="flex:2.8;background:#35c3dc"></i><i style="flex:1.4;background:#e3b34b"></i></span><span class="wz-bar" style="height:74%"><i style="flex:6.5;background:#3ba99c"></i><i style="flex:3.6;background:#4f86d6"></i><i style="flex:3.7;background:#e0668f"></i><i style="flex:2.8;background:#35c3dc"></i><i style="flex:1.9;background:#e3b34b"></i></span><span class="wz-bar" style="height:60%"><i style="flex:7.6;background:#3ba99c"></i><i style="flex:4.3;background:#4f86d6"></i><i style="flex:3.8;background:#e0668f"></i><i style="flex:2.6;background:#35c3dc"></i><i style="flex:1.9;background:#e3b34b"></i></span><span class="wz-bar" style="height:68%"><i style="flex:6.4;background:#3ba99c"></i><i style="flex:5.6;background:#4f86d6"></i><i style="flex:4.3;background:#e0668f"></i><i style="flex:2.4;background:#35c3dc"></i><i style="flex:2.0;background:#e3b34b"></i></span><span class="wz-bar" style="height:77%"><i style="flex:5.2;background:#3ba99c"></i><i style="flex:5.3;background:#4f86d6"></i><i style="flex:3.7;background:#e0668f"></i><i style="flex:3.2;background:#35c3dc"></i><i style="flex:2.2;background:#e3b34b"></i></span><span class="wz-bar" style="height:91%"><i style="flex:5.9;background:#3ba99c"></i><i style="flex:4.5;background:#4f86d6"></i><i style="flex:3.7;background:#e0668f"></i><i style="flex:1.6;background:#35c3dc"></i><i style="flex:1.8;background:#e3b34b"></i></span><span class="wz-bar" style="height:84%"><i style="flex:5.5;background:#3ba99c"></i><i style="flex:3.8;background:#4f86d6"></i><i style="flex:2.5;background:#e0668f"></i><i style="flex:2.8;background:#35c3dc"></i><i style="flex:1.4;background:#e3b34b"></i></span><span class="wz-bar" style="height:63%"><i style="flex:5.7;background:#3ba99c"></i><i style="flex:4.5;background:#4f86d6"></i><i style="flex:4.1;background:#e0668f"></i><i style="flex:1.7;background:#35c3dc"></i><i style="flex:1.7;background:#e3b34b"></i></span><span class="wz-bar" style="height:57%"><i style="flex:6.6;background:#3ba99c"></i><i style="flex:5.7;background:#4f86d6"></i><i style="flex:4.0;background:#e0668f"></i><i style="flex:3.0;background:#35c3dc"></i><i style="flex:1.5;background:#e3b34b"></i></span><span class="wz-bar" style="height:72%"><i style="flex:6.2;background:#3ba99c"></i><i style="flex:4.4;background:#4f86d6"></i><i style="flex:4.2;background:#e0668f"></i><i style="flex:3.1;background:#35c3dc"></i><i style="flex:1.4;background:#e3b34b"></i></span><span class="wz-bar" style="height:96%"><i style="flex:5.5;background:#3ba99c"></i><i style="flex:4.1;background:#4f86d6"></i><i style="flex:2.9;background:#e0668f"></i><i style="flex:2.4;background:#35c3dc"></i><i style="flex:1.9;background:#e3b34b"></i></span><span class="wz-bar" style="height:88%"><i style="flex:5.8;background:#3ba99c"></i><i style="flex:3.5;background:#4f86d6"></i><i style="flex:3.2;background:#e0668f"></i><i style="flex:2.2;background:#35c3dc"></i><i style="flex:1.9;background:#e3b34b"></i></span><span class="wz-bar" style="height:66%"><i style="flex:7.9;background:#3ba99c"></i><i style="flex:5.2;background:#4f86d6"></i><i style="flex:3.4;background:#e0668f"></i><i style="flex:2.6;background:#35c3dc"></i><i style="flex:2.0;background:#e3b34b"></i></span><span class="wz-bar" style="height:79%"><i style="flex:5.2;background:#3ba99c"></i><i style="flex:5.7;background:#4f86d6"></i><i style="flex:4.0;background:#e0668f"></i><i style="flex:3.0;background:#35c3dc"></i><i style="flex:2.2;background:#e3b34b"></i></span></span></span><span class="wz-legend"><span><i style="background:#3ba99c"></i>dc-01</span><span><i style="background:#4f86d6"></i>fs-01</span><span><i style="background:#e0668f"></i>web-prod-01</span><span><i style="background:#35c3dc"></i>mail-gw</span><span><i style="background:#e3b34b"></i>ws-fin-07</span></span></span>
+                        <span class="wz-panel wz-mitre"><small>Top MITRE ATT&amp;CK</small><span class="wz-donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" pathLength="100" stroke="#e0668f" stroke-dasharray="32.8 67.2" stroke-dashoffset="0"/><circle cx="50" cy="50" r="38" pathLength="100" stroke="#4f86d6" stroke-dasharray="22.8 77.2" stroke-dashoffset="-34"/><circle cx="50" cy="50" r="38" pathLength="100" stroke="#35c3dc" stroke-dasharray="16.8 83.2" stroke-dashoffset="-58"/><circle cx="50" cy="50" r="38" pathLength="100" stroke="#e3b34b" stroke-dasharray="12.8 87.2" stroke-dashoffset="-76"/><circle cx="50" cy="50" r="38" pathLength="100" stroke="#3ba99c" stroke-dasharray="8.8 91.2" stroke-dashoffset="-90"/><text x="50" y="49">24</text><text x="50" y="62" class="s">techniques</text></svg><span class="wz-mlist"><span><i style="background:#e0668f"></i><em>Brute Force</em><b>34%</b></span><span><i style="background:#4f86d6"></i><em>Valid Accounts</em><b>24%</b></span><span><i style="background:#35c3dc"></i><em>Password Guessing</em><b>18%</b></span><span><i style="background:#e3b34b"></i><em>Data Manipulation</em><b>14%</b></span><span><i style="background:#3ba99c"></i><em>Ingress Tool Transfer</em><b>10%</b></span></span></span></span>
+                      </span>
+                      <span class="wz-panel wz-alerts"><small>Security alerts<em><svg class="ci" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>level &gt;= 5</em></small>
+                        <span class="wz-row wz-thead"><span class="c-time">Time</span><span class="c-agent">Agent</span><span class="c-mitre">Technique</span><span class="c-desc">Description</span><span class="c-lvl">Level</span><span class="c-id">Rule ID</span></span>
+                        <span class="con-feed con-feed--8"><span class="con-feed__in"><span class="wz-row is-high"><span class="c-time">09:42:16</span><span class="c-agent">fw-edge</span><span class="c-mitre">T1046</span><span class="c-desc">Suricata: ET SCAN Nmap Scripting Engine detected</span><span class="c-lvl"><b>10</b></span><span class="c-id">86601</span></span><span class="wz-row is-crit"><span class="c-time">09:41:27</span><span class="c-agent">ws-fin-07</span><span class="c-mitre">T1105</span><span class="c-desc">Executable dropped in folder commonly used by malware</span><span class="c-lvl"><b>15</b></span><span class="c-id">92213</span></span><span class="wz-row is-high"><span class="c-time">09:39:44</span><span class="c-agent">dc-01</span><span class="c-mitre">T1110</span><span class="c-desc">Multiple Windows logon failures</span><span class="c-lvl"><b>10</b></span><span class="c-id">60204</span></span><span class="wz-row is-high"><span class="c-time">09:38:02</span><span class="c-agent">web-prod-01</span><span class="c-mitre">T1110</span><span class="c-desc">sshd: brute force trying to get access to the system</span><span class="c-lvl"><b>10</b></span><span class="c-id">5712</span></span><span class="wz-row is-low"><span class="c-time">09:37:55</span><span class="c-agent">web-prod-01</span><span class="c-mitre">T1110.001</span><span class="c-desc">sshd: attempt to login using a non-existent user</span><span class="c-lvl"><b>5</b></span><span class="c-id">5710</span></span><span class="wz-row is-mid"><span class="c-time">09:22:13</span><span class="c-agent">fs-01</span><span class="c-mitre">T1565.001</span><span class="c-desc">Integrity checksum changed</span><span class="c-lvl"><b>7</b></span><span class="c-id">550</span></span><span class="wz-row is-low"><span class="c-time">09:15:48</span><span class="c-agent">dc-01</span><span class="c-mitre">T1078</span><span class="c-desc">Logon failure: unknown user or bad password</span><span class="c-lvl"><b>5</b></span><span class="c-id">60122</span></span><span class="wz-row is-low"><span class="c-time">09:11:30</span><span class="c-agent">mail-gw</span><span class="c-mitre">T1078</span><span class="c-desc">PAM: user login failed</span><span class="c-lvl"><b>5</b></span><span class="c-id">5503</span></span><span class="wz-row is-high"><span class="c-time">09:42:16</span><span class="c-agent">fw-edge</span><span class="c-mitre">T1046</span><span class="c-desc">Suricata: ET SCAN Nmap Scripting Engine detected</span><span class="c-lvl"><b>10</b></span><span class="c-id">86601</span></span><span class="wz-row is-crit"><span class="c-time">09:41:27</span><span class="c-agent">ws-fin-07</span><span class="c-mitre">T1105</span><span class="c-desc">Executable dropped in folder commonly used by malware</span><span class="c-lvl"><b>15</b></span><span class="c-id">92213</span></span><span class="wz-row is-high"><span class="c-time">09:39:44</span><span class="c-agent">dc-01</span><span class="c-mitre">T1110</span><span class="c-desc">Multiple Windows logon failures</span><span class="c-lvl"><b>10</b></span><span class="c-id">60204</span></span><span class="wz-row is-high"><span class="c-time">09:38:02</span><span class="c-agent">web-prod-01</span><span class="c-mitre">T1110</span><span class="c-desc">sshd: brute force trying to get access to the system</span><span class="c-lvl"><b>10</b></span><span class="c-id">5712</span></span><span class="wz-row is-low"><span class="c-time">09:37:55</span><span class="c-agent">web-prod-01</span><span class="c-mitre">T1110.001</span><span class="c-desc">sshd: attempt to login using a non-existent user</span><span class="c-lvl"><b>5</b></span><span class="c-id">5710</span></span><span class="wz-row is-mid"><span class="c-time">09:22:13</span><span class="c-agent">fs-01</span><span class="c-mitre">T1565.001</span><span class="c-desc">Integrity checksum changed</span><span class="c-lvl"><b>7</b></span><span class="c-id">550</span></span><span class="wz-row is-low"><span class="c-time">09:15:48</span><span class="c-agent">dc-01</span><span class="c-mitre">T1078</span><span class="c-desc">Logon failure: unknown user or bad password</span><span class="c-lvl"><b>5</b></span><span class="c-id">60122</span></span><span class="wz-row is-low"><span class="c-time">09:11:30</span><span class="c-agent">mail-gw</span><span class="c-mitre">T1078</span><span class="c-desc">PAM: user login failed</span><span class="c-lvl"><b>5</b></span><span class="c-id">5503</span></span></span></span>
+                      </span>
+                    </span>
+                  </span>
+                </span></span>
+              </span>
+            </a>
+                <div class="wplane__text">
+                  <span class="wplane__count"><b>01</b> / 04 <i></i> Cybersecurity</span>
+                  <h3><a href="work/security-monitoring-wazuh.html">Centralised security monitoring with Wazuh</a></h3>
+                  <p>How we built a low-budget client a complete open-source security stack: Wazuh as their SIEM and EDR, custom decoders for their own apps, and Suricata watching the network.</p>
+                  <div class="wplane__actions">
+                <a class="work-btn" href="services/cybersecurity.html">Cybersecurity <svg><use href="#i-arrow"/></svg></a>
+                <a class="work-see" href="work/security-monitoring-wazuh.html">See more<span class="visually-hidden">: Centralised security monitoring with Wazuh</span> <svg><use href="#i-arrow"/></svg></a>
+              </div>
+                </div>
+              </div>
+            </li>
+            <!-- 02 -->
+            <li class="wplane" data-wproj>
+              <div class="wplane__in">
+                <a class="work-shot" href="work/gym-admin-portal-qr-access.html" tabindex="-1" aria-hidden="true">
+              <span class="work-window">
+                <span class="work-tag">Custom Software</span>
+                <span class="con con--gym" aria-hidden="true"><span class="con__ui">
+                  <span class="gy-rail"><b class="gy-logo">SO</b><svg class="ci" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V20h14V9.5M10 20v-6h4v6"/></svg><i class="is-on"><svg class="ci" viewBox="0 0 24 24"><path d="M6 21V3h12v18M3 21h18M14 12h.01"/></svg></i><svg class="ci" viewBox="0 0 24 24"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.3a3.5 3.5 0 0 1 0 6.4M18 14.4c2.1.8 3.5 2.8 3.5 5.6"/></svg><svg class="ci" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 10h18M7 15h4"/></svg><svg class="ci" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/></svg><svg class="ci" viewBox="0 0 24 24"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>
+                  <span class="gy-main">
+                    <span class="gy-head"><b>Entries</b><span class="gy-live"><i></i>LIVE</span><span class="gy-count"><span class="gy-tick"></span>entries today</span></span>
+                    <span class="gy-kpis"><span><small>In the gym now</small><b>37</b></span><span><small>Granted</small><b class="t-ok">121</b></span><span><small>Denied</small><b class="t-no">7</b></span><span><small>Busiest hour</small><b>17:00</b></span></span>
+                    <span class="gy-tools"><span class="gy-search"><svg class="ci" viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14M16.5 16.5 21 21"/></svg>Search name, pass or staff</span><span class="gy-chips"><span class="is-on">Today</span><span>7 days</span><span>30 days</span><span>All</span></span></span>
+                    <span class="gy-body">
+                      <span class="gy-table">
+                        <span class="gy-row gy-thead"><span class="c-time">Time</span><i class="c-av"></i><span class="c-mem">Member</span><span class="c-res">Result</span><span class="c-reason">Reason</span><span class="c-pass">Pass</span></span>
+                        <span class="con-feed con-feed--10"><span class="con-feed__in"><span class="gy-row"><span class="c-time">17:42:10</span><i class="c-av" style="--c:#2dd4bf">AN</i><span class="c-mem">Alex Novak</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">10 entries (7 left)</span></span><span class="gy-row"><span class="c-time">17:39:03</span><i class="c-av" style="--c:#ffcc1a">SK</i><span class="c-mem">Sara Kovac</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:35:56</span><i class="c-av" style="--c:#67e8f9">TV</i><span class="c-mem">Tomas Varga</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:32:49</span><i class="c-av" style="--c:#4ade80">NH</i><span class="c-mem">Nina Horvat</span><span class="c-res"><b class="is-no"><svg class="ci" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Denied</b></span><span class="c-reason">Pass expired</span><span class="c-pass">No active pass</span></span><span class="gy-row"><span class="c-time">17:29:42</span><i class="c-av" style="--c:#ff8a80">PB</i><span class="c-mem">Peter Balog</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Student monthly</span></span><span class="gy-row"><span class="c-time">17:26:35</span><i class="c-av" style="--c:#60a5fa">LT</i><span class="c-mem">Lena Toth<em class="gy-tag">Trainer</em></span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:23:28</span><i class="c-av" style="--c:#2dd4bf">MS</i><span class="c-mem">Marek Sipos</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">10 entries (6 left)</span></span><span class="gy-row"><span class="c-time">17:20:21</span><i class="c-av" style="--c:#ffcc1a">EM</i><span class="c-mem">Eva Molnar</span><span class="c-res"><b class="is-no"><svg class="ci" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Denied</b></span><span class="c-reason">Code already used</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:17:14</span><i class="c-av" style="--c:#67e8f9">JU</i><span class="c-mem">Jakub Urban</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:14:07</span><i class="c-av" style="--c:#4ade80">PN</i><span class="c-mem">Petra Nagy</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Single entry</span></span><span class="gy-row"><span class="c-time">17:42:10</span><i class="c-av" style="--c:#2dd4bf">AN</i><span class="c-mem">Alex Novak</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">10 entries (7 left)</span></span><span class="gy-row"><span class="c-time">17:39:03</span><i class="c-av" style="--c:#ffcc1a">SK</i><span class="c-mem">Sara Kovac</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:35:56</span><i class="c-av" style="--c:#67e8f9">TV</i><span class="c-mem">Tomas Varga</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:32:49</span><i class="c-av" style="--c:#4ade80">NH</i><span class="c-mem">Nina Horvat</span><span class="c-res"><b class="is-no"><svg class="ci" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Denied</b></span><span class="c-reason">Pass expired</span><span class="c-pass">No active pass</span></span><span class="gy-row"><span class="c-time">17:29:42</span><i class="c-av" style="--c:#ff8a80">PB</i><span class="c-mem">Peter Balog</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Student monthly</span></span><span class="gy-row"><span class="c-time">17:26:35</span><i class="c-av" style="--c:#60a5fa">LT</i><span class="c-mem">Lena Toth<em class="gy-tag">Trainer</em></span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:23:28</span><i class="c-av" style="--c:#2dd4bf">MS</i><span class="c-mem">Marek Sipos</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">10 entries (6 left)</span></span><span class="gy-row"><span class="c-time">17:20:21</span><i class="c-av" style="--c:#ffcc1a">EM</i><span class="c-mem">Eva Molnar</span><span class="c-res"><b class="is-no"><svg class="ci" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Denied</b></span><span class="c-reason">Code already used</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:17:14</span><i class="c-av" style="--c:#67e8f9">JU</i><span class="c-mem">Jakub Urban</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Monthly</span></span><span class="gy-row"><span class="c-time">17:14:07</span><i class="c-av" style="--c:#4ade80">PN</i><span class="c-mem">Petra Nagy</span><span class="c-res"><b class="is-ok"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Granted</b></span><span class="c-reason">Entry granted</span><span class="c-pass">Single entry</span></span></span></span>
+                      </span>
+                      <span class="gy-scan"><small><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 18h2v2h-2zM18 14h2M14 20v-2"/></svg>Last scan, door 1</small><span class="gy-qrbox"><svg class="gy-qr" viewBox="-2 -2 29 29" shape-rendering="crispEdges"><path d="M8 0h1v1h-1zM11 0h1v1h-1zM14 0h1v1h-1zM9 1h1v1h-1zM10 1h1v1h-1zM11 1h1v1h-1zM14 1h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM13 2h1v1h-1zM14 2h1v1h-1zM15 2h1v1h-1zM16 2h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM15 3h1v1h-1zM16 3h1v1h-1zM12 4h1v1h-1zM13 4h1v1h-1zM14 4h1v1h-1zM15 4h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM16 5h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM16 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM19 8h1v1h-1zM21 8h1v1h-1zM22 8h1v1h-1zM23 8h1v1h-1zM24 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM4 9h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM17 9h1v1h-1zM21 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM0 10h1v1h-1zM2 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM13 10h1v1h-1zM15 10h1v1h-1zM16 10h1v1h-1zM17 10h1v1h-1zM18 10h1v1h-1zM19 10h1v1h-1zM20 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM24 10h1v1h-1zM5 11h1v1h-1zM6 11h1v1h-1zM7 11h1v1h-1zM11 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM0 12h1v1h-1zM4 12h1v1h-1zM9 12h1v1h-1zM12 12h1v1h-1zM17 12h1v1h-1zM20 12h1v1h-1zM22 12h1v1h-1zM24 12h1v1h-1zM2 13h1v1h-1zM7 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM15 13h1v1h-1zM17 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM24 13h1v1h-1zM1 14h1v1h-1zM2 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM16 14h1v1h-1zM19 14h1v1h-1zM20 14h1v1h-1zM21 14h1v1h-1zM23 14h1v1h-1zM1 15h1v1h-1zM3 15h1v1h-1zM4 15h1v1h-1zM5 15h1v1h-1zM6 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM12 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM20 15h1v1h-1zM21 15h1v1h-1zM22 15h1v1h-1zM24 15h1v1h-1zM0 16h1v1h-1zM1 16h1v1h-1zM6 16h1v1h-1zM9 16h1v1h-1zM12 16h1v1h-1zM13 16h1v1h-1zM16 16h1v1h-1zM21 16h1v1h-1zM23 16h1v1h-1zM11 17h1v1h-1zM17 17h1v1h-1zM20 17h1v1h-1zM21 17h1v1h-1zM22 17h1v1h-1zM9 18h1v1h-1zM11 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM16 18h1v1h-1zM17 18h1v1h-1zM8 19h1v1h-1zM9 19h1v1h-1zM11 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM21 19h1v1h-1zM9 20h1v1h-1zM13 20h1v1h-1zM16 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM9 21h1v1h-1zM10 21h1v1h-1zM11 21h1v1h-1zM12 21h1v1h-1zM15 21h1v1h-1zM16 21h1v1h-1zM17 21h1v1h-1zM20 21h1v1h-1zM22 21h1v1h-1zM23 21h1v1h-1zM24 21h1v1h-1zM9 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM16 22h1v1h-1zM17 22h1v1h-1zM19 22h1v1h-1zM20 22h1v1h-1zM21 22h1v1h-1zM23 22h1v1h-1zM24 22h1v1h-1zM14 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM24 23h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM13 24h1v1h-1zM15 24h1v1h-1zM16 24h1v1h-1zM18 24h1v1h-1zM19 24h1v1h-1zM23 24h1v1h-1zM0 0h7v7h-7zM1 1v5h5v-5zM2 2h3v3h-3zM18 0h7v7h-7zM19 1v5h5v-5zM20 2h3v3h-3zM0 18h7v7h-7zM1 19v5h5v-5zM2 20h3v3h-3z"/></svg><i></i></span><span class="gy-who"><b>Alex Novak</b><em>10 entries (7 left)</em></span><span class="gy-pass"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Access granted</span></span>
+                    </span>
+                  </span>
+                </span></span>
+              </span>
+            </a>
+                <div class="wplane__text">
+                  <span class="wplane__count"><b>02</b> / 04 <i></i> Custom Software</span>
+                  <h3><a href="work/gym-admin-portal-qr-access.html">Gym admin portal with QR access</a></h3>
+                  <p>How we built a gym's admin portal and a complete QR code access system: members get in with a code on their phone, and staff see every entry, membership and sale in one place.</p>
+                  <div class="wplane__actions">
+                <a class="work-btn" href="services/custom-software.html">Custom Software <svg><use href="#i-arrow"/></svg></a>
+                <a class="work-see" href="work/gym-admin-portal-qr-access.html">See more<span class="visually-hidden">: Gym admin portal with QR access</span> <svg><use href="#i-arrow"/></svg></a>
+              </div>
+                </div>
+              </div>
+            </li>
+            <!-- 03 -->
+            <li class="wplane" data-wproj>
+              <div class="wplane__in">
+                <a class="work-shot" href="work/landscaping-company-website.html" tabindex="-1" aria-hidden="true">
+              <span class="work-window">
+                <span class="work-tag">Web Design &amp; Development</span>
+                <span class="work-site">
+                  <span class="work-site-bar">
+                    <span class="work-site-dots"><i></i><i></i><i></i></span>
+                    <span class="work-site-url"><svg viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg><span class="work-site-blur">clientgarden.sk</span></span>
+                  </span>
+                  <span class="work-site-view"><picture><source media="(max-width: 600px)" srcset="img/work/garden-site-phone-780.jpg 780w, img/work/garden-site-phone.jpg 1170w" sizes="90vw"><img src="img/work/garden-site-1440.jpg" srcset="img/work/garden-site-1440.jpg 1440w, img/work/garden-site-2304.jpg 2304w" sizes="(max-width: 900px) 600px, (max-width: 1499px) 860px, 1010px" alt="" width="1440" height="2000" loading="lazy" decoding="async"></picture></span>
+                </span>
+              </span>
+            </a>
+                <div class="wplane__text">
+                  <span class="wplane__count"><b>03</b> / 04 <i></i> Web Design &amp; Development</span>
+                  <h3><a href="work/landscaping-company-website.html">Website for a landscaping company</a></h3>
+                  <p>How we built a modern site with 3D objects, parallax scrolling and smooth animations that stays fast and light, works in older browsers and looks good on any device.</p>
+                  <div class="wplane__actions">
+                <a class="work-btn" href="services/web-development.html">Web Design &amp; Development <svg><use href="#i-arrow"/></svg></a>
+                <a class="work-see" href="work/landscaping-company-website.html">See more<span class="visually-hidden">: Website for a landscaping company</span> <svg><use href="#i-arrow"/></svg></a>
+              </div>
+                </div>
+              </div>
+            </li>
+            <!-- 04 -->
+            <li class="wplane" data-wproj>
+              <div class="wplane__in">
+                <a class="work-shot" href="work/segmented-network-asset-map.html" tabindex="-1" aria-hidden="true">
+              <span class="work-window">
+                <span class="work-tag">Network &amp; Infrastructure</span>
+                <span class="con con--nb" aria-hidden="true"><span class="con__ui">
+                  <span class="nb-side"><b class="nb-logo"><i></i>netbox</b><span><svg class="ci" viewBox="0 0 24 24"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20"/></svg>Organization</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h8"/></svg>Racks</span><span class=is-on><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg>Devices</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></svg>Connections</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Wireless</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M9 3h6v5H9zM3 16h6v5H3zM15 16h6v5h-6zM12 8v4M6 16v-4h12v4"/></svg>IPAM</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/></svg>VPN</span><span><svg class="ci" viewBox="0 0 24 24"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Admin</span></span>
+                  <span class="nb-main">
+                    <span class="nb-top"><svg class="ci nb-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><b class="nb-mlogo">netbox</b><span class="nb-search"><svg class="ci" viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14M16.5 16.5 21 21"/></svg>Search devices, IPs, sites</span><span class="nb-user"><i>A</i>admin</span></span>
+                    <span class="nb-head"><span class="nb-title"><small>Devices / Site HQ</small><b>Devices<em class="nb-count"></em></b></span><span class="nb-btns"><span class="nb-btn nb-btn--add"><svg class="ci" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add</span><span class="nb-btn nb-btn--imp"><svg class="ci" viewBox="0 0 24 24"><path d="M12 19V6M6 11l6-6 6 6"/></svg>Import</span><span class="nb-btn nb-btn--exp"><svg class="ci" viewBox="0 0 24 24"><path d="M12 5v13M6 13l6 6 6-6"/></svg>Export</span></span></span>
+                    <span class="nb-filters"><span class="nb-chip">Site: HQ<svg class="ci" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="nb-chip">Status: any<svg class="ci" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="nb-q"><svg class="ci" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>Add filter</span></span>
+                    <span class="nb-body">
+                      <span class="nb-table">
+                        <span class="nb-row nb-thead"><i class="c-box"></i><i class="c-ic"></i><span class="c-name">Name</span><span class="c-status">Status</span><span class="c-role">Role</span><span class="c-type">Type</span><span class="c-ip">Primary IP</span><span class="c-tags">Tags</span></span>
+                        <span class="nb-rows"><span class="nb-row nb-row--new" style="--c:#0ca678"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M9 3h6v5H9zM3 16h6v5H3zM15 16h6v5h-6zM12 8v4M6 16v-4h12v4"/></svg></i><span class="c-name">sw-acc-03</span><span class="c-status"><b class="is-planned"><i></i>Planned</b></span><span class="c-role"><b>Access Switch</b></span><span class="c-type">Catalyst 9300</span><span class="c-ip">10.99.0.13/24</span><span class="c-tags"><b style="--c:#8fa1b3">mgmt</b><b style="--c:#0ca678">users</b></span></span><span class="nb-row" style="--c:#f76707"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 1-3-1-5 1-9"/></svg></i><span class="c-name">fw-edge-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Firewall</b></span><span class="c-type">FortiGate 100F</span><span class="c-ip">203.0.113.2/29</span><span class="c-tags"><b style="--c:#f76707">dmz</b></span></span><span class="nb-row" style="--c:#f76707"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 1-3-1-5 1-9"/></svg></i><span class="c-name">fw-core-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Firewall</b></span><span class="c-type">FortiGate 200F</span><span class="c-ip">10.0.0.1/30</span><span class="c-tags"><b style="--c:#4f86d6">core</b></span></span><span class="nb-row" style="--c:#4f86d6"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M9 3h6v5H9zM3 16h6v5H3zM15 16h6v5h-6zM12 8v4M6 16v-4h12v4"/></svg></i><span class="c-name">sw-core-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Core Switch</b></span><span class="c-type">Catalyst 9500</span><span class="c-ip">10.99.0.1/24</span><span class="c-tags"><b style="--c:#4f86d6">core</b><b style="--c:#8fa1b3">mgmt</b></span></span><span class="nb-row" style="--c:#0ea5b7"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg></i><span class="c-name">web-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Server</b></span><span class="c-type">PowerEdge R650</span><span class="c-ip">10.10.10.21/24</span><span class="c-tags"><b style="--c:#f76707">dmz</b></span></span><span class="nb-row" style="--c:#0ea5b7"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg></i><span class="c-name">mail-gw-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Server</b></span><span class="c-type">PowerEdge R450</span><span class="c-ip">10.10.10.25/24</span><span class="c-tags"><b style="--c:#f76707">dmz</b></span></span><span class="nb-row" style="--c:#e0668f"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/></svg></i><span class="c-name">vpn-gw-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>VPN Gateway</b></span><span class="c-type">FortiGate 60F</span><span class="c-ip">10.10.10.30/24</span><span class="c-tags"><b style="--c:#f76707">dmz</b></span></span><span class="nb-row" style="--c:#0ea5b7"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg></i><span class="c-name">erp-db-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Server</b></span><span class="c-type">PowerEdge R750</span><span class="c-ip">10.20.0.15/24</span><span class="c-tags"><b style="--c:#0ea5b7">internal</b></span></span><span class="nb-row" style="--c:#0ea5b7"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg></i><span class="c-name">dc-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Server</b></span><span class="c-type">PowerEdge R450</span><span class="c-ip">10.20.0.10/24</span><span class="c-tags"><b style="--c:#0ea5b7">internal</b></span></span><span class="nb-row" style="--c:#0ea5b7"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg></i><span class="c-name">fs-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Server</b></span><span class="c-type">PowerEdge R550</span><span class="c-ip">10.20.0.12/24</span><span class="c-tags"><b style="--c:#0ea5b7">internal</b></span></span><span class="nb-row" style="--c:#0ca678"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M9 3h6v5H9zM3 16h6v5H3zM15 16h6v5h-6zM12 8v4M6 16v-4h12v4"/></svg></i><span class="c-name">sw-acc-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Access Switch</b></span><span class="c-type">Catalyst 9300</span><span class="c-ip">10.99.0.11/24</span><span class="c-tags"><b style="--c:#0ca678">users</b></span></span><span class="nb-row" style="--c:#0ca678"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M9 3h6v5H9zM3 16h6v5H3zM15 16h6v5h-6zM12 8v4M6 16v-4h12v4"/></svg></i><span class="c-name">sw-acc-02</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Access Switch</b></span><span class="c-type">Catalyst 9300</span><span class="c-ip">10.99.0.12/24</span><span class="c-tags"><b style="--c:#0ca678">users</b></span></span><span class="nb-row" style="--c:#0ca678"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></i><span class="c-name">ap-floor1-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Access Point</b></span><span class="c-type">Aruba AP-515</span><span class="c-ip">10.99.0.21/24</span><span class="c-tags"><b style="--c:#0ca678">users</b></span></span><span class="nb-row" style="--c:#0ea5b7"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg></i><span class="c-name">backup-01</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Server</b></span><span class="c-type">PowerEdge R750</span><span class="c-ip">10.99.0.40/24</span><span class="c-tags"><b style="--c:#0ea5b7">internal</b></span></span><span class="nb-row" style="--c:#8fa1b3"><i class="c-box"></i><i class="c-ic"><svg class="ci" viewBox="0 0 24 24"><path d="M4 4h16v7H4zM4 13h16v7H4zM8 7.5h.01M8 16.5h.01"/></svg></i><span class="c-name">ws-fin-07</span><span class="c-status"><b class="is-active"><i></i>Active</b></span><span class="c-role"><b>Workstation</b></span><span class="c-type">OptiPlex 7010</span><span class="c-ip">10.30.1.42/24</span><span class="c-tags"><b style="--c:#0ca678">users</b></span></span></span>
+                      </span>
+                      <span class="nb-rack"><small>Rack HQ-R1</small><span class="nb-us"><span class="nb-u" style="--c:#33475c;flex-grow:1">patch-01</span><span class="nb-u" style="--c:#f76707;flex-grow:1">fw-edge-01</span><span class="nb-u" style="--c:#f76707;flex-grow:1">fw-core-01</span><span class="nb-u" style="--c:#4f86d6;flex-grow:1">sw-core-01</span><span class="nb-u" style="--c:#0ca678;flex-grow:1">sw-acc-01</span><span class="nb-u" style="--c:#0ca678;flex-grow:1">sw-acc-02</span><span class="nb-u is-new" style="--c:#0ca678;flex-grow:1">sw-acc-03</span><span class="nb-u is-empty" style="--c:transparent;flex-grow:1"></span><span class="nb-u" style="--c:#0ea5b7;flex-grow:1">web-01</span><span class="nb-u" style="--c:#0ea5b7;flex-grow:2">erp-db-01</span><span class="nb-u" style="--c:#0ea5b7;flex-grow:1">fs-01</span><span class="nb-u" style="--c:#0ea5b7;flex-grow:1">dc-01</span><span class="nb-u" style="--c:#0ea5b7;flex-grow:2">backup-01</span><span class="nb-u" style="--c:#33475c;flex-grow:2">ups-01</span></span></span>
+                    </span>
+                  </span>
+                  <span class="nb-toast"><svg class="ci" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Created device <b>sw-acc-03</b></span>
+                </span></span>
+              </span>
+            </a>
+                <div class="wplane__text">
+                  <span class="wplane__count"><b>04</b> / 04 <i></i> Network &amp; Infrastructure</span>
+                  <h3><a href="work/segmented-network-asset-map.html">Segmented network with a full asset map</a></h3>
+                  <p>How we split a client's network into a DMZ and protected internal zones, then documented every asset, device and connection in NetBox as the CMDB.</p>
+                  <div class="wplane__actions">
+                <a class="work-btn" href="services/network-infrastructure.html">Network &amp; Infrastructure <svg><use href="#i-arrow"/></svg></a>
+                <a class="work-see" href="work/segmented-network-asset-map.html">See more<span class="visually-hidden">: Segmented network with a full asset map</span> <svg><use href="#i-arrow"/></svg></a>
+              </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="works__tabs"><button type="button" class="works__tab" aria-label="Go to project 1: Security monitoring"><span><svg><use href="#i-shield"/></svg></span><em>Security monitoring</em></button><button type="button" class="works__tab" aria-label="Go to project 2: Gym portal"><span><svg><use href="#i-code"/></svg></span><em>Gym portal</em></button><button type="button" class="works__tab" aria-label="Go to project 3: Landscaping website"><span><svg><use href="#i-web"/></svg></span><em>Landscaping website</em></button><button type="button" class="works__tab" aria-label="Go to project 4: Network map"><span><svg><use href="#i-network"/></svg></span><em>Network map</em></button></div>
+
+        <!-- the logo you fly through (script.js copies its facets from "How we work") -->
+        <svg class="works__fly" aria-hidden="true"><g></g></svg>
+        <!-- the light at the end of the tunnel -->
+        <div class="works__glow" aria-hidden="true"></div>
+        <div class="works__light" aria-hidden="true"></div>
+
+        <!-- TESTIMONIALS -->
+        <div class="end" id="testimonials" aria-labelledby="tst-title">
+          <div class="end__inner">
+            <div class="end__fig" aria-hidden="true">
+              <svg viewBox="-1060 -1220 2120 2440">
+                <polygon class="flow__ring" points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/>
+                <polygon class="flow__ring flow__ring--on" pathLength="100" points="0,-1190 1030.6,-595 1030.6,595 0,1190 -1030.6,595 -1030.6,-595"/>
+                <polygon class="end__core" points="0,-930 805.4,-465 805.4,465 0,930 -805.4,465 -805.4,-465"/>
+                <g class="end__face"><path class="end__mark" d="M-60,-330 C-200,-300 -290,-190 -290,-40 L-290,70 L-70,70 L-70,-150 L-180,-150 C-175,-200 -130,-240 -60,-255 Z M280,-330 C140,-300 50,-190 50,-40 L50,70 L270,70 L270,-150 L160,-150 C165,-200 210,-240 280,-255 Z"/><text y="420">JM</text><text y="420">SR</text><text y="420">AK</text><text y="420">TP</text></g>
+              </svg>
+            </div>
+            <div class="end__main">
+              <header class="end__head">
+                <span class="eyebrow">Testimonials</span>
+                <h2 id="tst-title">Clients who <span class="gradient-text">trust us</span></h2>
+              </header>
+              <div class="end__deck">
+                <figure class="tcard" data-tcard>
+              <div class="stars">★★★★★</div>
+              <blockquote>“Vimentus secured our entire network, rebuilt our website and delivered a custom booking system — all on time. They feel like part of our own team.”</blockquote>
+              <figcaption class="testimonial__author"><span class="avatar">JM</span><div><strong>Jordan Miles</strong><span>CTO, Helix Labs</span></div></figcaption>
+            </figure>
+                <figure class="tcard" data-tcard>
+              <div class="stars">★★★★★</div>
+              <blockquote>“Their penetration test found issues three previous audits missed. Clear reporting, fast fixes, and genuinely great people to work with.”</blockquote>
+              <figcaption class="testimonial__author"><span class="avatar">SR</span><div><strong>Sam Rivera</strong><span>Head of IT, Quantix</span></div></figcaption>
+            </figure>
+                <figure class="tcard" data-tcard>
+              <div class="stars">★★★★★</div>
+              <blockquote>“Our new store loads in under a second and conversions are up 40%. The design team understood our brand from day one.”</blockquote>
+              <figcaption class="testimonial__author"><span class="avatar">AK</span><div><strong>Alex Kim</strong><span>Founder, Lumina</span></div></figcaption>
+            </figure>
+                <figure class="tcard" data-tcard>
+              <div class="stars">★★★★★</div>
+              <blockquote>“They replaced five spreadsheets and two legacy tools with one custom app. Our operations team saves hours every single day.”</blockquote>
+              <figcaption class="testimonial__author"><span class="avatar">TP</span><div><strong>Taylor Price</strong><span>COO, Stratus</span></div></figcaption>
+            </figure>
+              </div>
+              <div class="end__people"><button type="button" class="end__person" aria-label="Show the testimonial from Jordan Miles"><span>JM</span></button><button type="button" class="end__person" aria-label="Show the testimonial from Sam Rivera"><span>SR</span></button><button type="button" class="end__person" aria-label="Show the testimonial from Alex Kim"><span>AK</span></button><button type="button" class="end__person" aria-label="Show the testimonial from Taylor Price"><span>TP</span></button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA: seen through the testimonials' hexagon first, then it grows over everything -->
+        <div class="end__cta hex-clip" id="cta" aria-labelledby="cta-title">
+          <div class="end__cta-content">
+            <div class="end__cta-copy">
+              <span class="end__cta-tag">Let's talk</span>
+              <h2 id="cta-title">Tell us what you're struggling with. <span>We'll take it from there.</span></h2>
+              <p>Tell us about your project and get a free consultation with one of our experts within 24 hours.</p>
+              <div class="end__cta-actions">
+                <a href="contact.html" class="btn btn--primary">Tell us what you need <svg><use href="#i-arrow"/></svg></a>
+                <a href="#services" class="btn btn--ghost">Explore our services</a>
+              </div>
+              <ul class="end__cta-points">
+                <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Free first consultation</li>
+                <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>No obligation</li>
+                <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Advice in plain language</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <svg class="works__rim works__rim--cta hex-rim" aria-hidden="true"><g><polygon style="--i:0" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:1" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:2" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:3" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:4" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:5" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:6" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:7" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:8" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:9" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:10" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:11" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:12" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon style="--i:13" points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/><polygon points="0,-1 .866,-.5 .866,.5 0,1 -.866,.5 -.866,-.5"/></g></svg>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="logo">
+            <img class="logo__mark" src="img/logo.png" alt="" width="347" height="400" />
+            <span>Vimentus</span>
+          </a>
+          <p>Secure, scalable technology for businesses that want to move faster. Planned, built and protected by one team.</p>
+          <a href="contact.html" class="btn btn--primary btn--sm">Get a free assessment <svg><use href="#i-arrow"/></svg></a>
+          <div class="socials">
+            <a href="#" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="#" aria-label="X"><svg><use href="#i-x"/></svg></a>
+            <a href="#" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+          </div>
+        </div>
+
+        <nav class="footer__col" aria-label="Services">
+          <h4>Services</h4>
+          <a href="services/cybersecurity.html">Cybersecurity</a>
+          <a href="services/network-infrastructure.html">Network &amp; Infrastructure</a>
+          <a href="services/web-development.html">Web Design &amp; Development</a>
+          <a href="services/custom-software.html">Custom Software</a>
+        </nav>
+
+        <nav class="footer__col" aria-label="Our work">
+          <h4>Our work</h4>
+          <a href="work/security-monitoring-wazuh.html">Security monitoring</a>
+          <a href="work/gym-admin-portal-qr-access.html">Gym portal</a>
+          <a href="work/landscaping-company-website.html">Landscaping website</a>
+          <a href="work/segmented-network-asset-map.html">Network &amp; asset map</a>
+        </nav>
+
+        <nav class="footer__col" aria-label="Company">
+          <h4>Company</h4>
+          <a href="about.html">About us</a>
+          <a href="index.html#process">How we work</a>
+          <a href="team.html">Our team</a>
+          <a href="careers.html">Careers</a>
+          <a href="blog.html">Blog</a>
+        </nav>
+
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:info@vimentus.com">info@vimentus.com</a>
+          <a href="tel:+421948316331">+421 948 316 331</a>
+        </div>
+      </div>
+
+      <div class="footer__word" aria-hidden="true">vimentus</div>
+
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> Vimentus. All rights reserved.</span>
+        <nav class="footer__legal" aria-label="Legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="cookies.html">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
