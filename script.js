@@ -17,7 +17,20 @@
   const stackQuery = window.matchMedia("(max-width: 900px)"); // the one-column layouts
   const lite = liteQuery.matches && !reduceMotion;
   const stacked = lite && stackQuery.matches;
+  // Phones (either way up): a plain scroll into and out of "What we do", and its cards open when tapped
+  const svcTap = lite && window.matchMedia("(max-width: 900px), (max-height: 500px)").matches;
+  // Phones, home page: fixed steps between sections (see "Phones: fixed steps between sections").
+  // The scenes are longer there, about a screen per step / project / quote.
+  const stops = svcTap && window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    && ["[data-open]", "[data-svc]", "[data-iris]", "#about .flow", "[data-works]"].every((q) => document.querySelector(q));
+  // Where the pinned scenes start counting. On phones with stops their sections are pulled up by
+  // this many screens and stay pinned longer (heights: "PHONE STOPS" in styles.css), so both sides
+  // of a switch hold still while it plays at its own pace (see pacedScroll), forwards and back.
+  const ABOUT_LEAD = stops ? 1.3 : 0, WORKS_LEAD = stops ? 1 : 0, IRIS_EXTRA = stops ? 2.5 : 0;
+  const aboutScrolled = (vh) => -rectOf(about).top - ABOUT_LEAD * vh;   // px since Why Vimentus began
+  const worksScrolled = (vh) => -rectOf(works).top / vh - WORKS_LEAD;   // screens since Our work began
   root.classList.toggle("is-lite", lite);
+  root.classList.toggle("has-stops", stops);
   let reloadTimer = 0;
   for (const q of [liteQuery, stackQuery]) q.addEventListener("change", () => { // e.g. a tablet turned on its side
     clearTimeout(reloadTimer);
@@ -66,45 +79,118 @@
   /* ---------- Navbar ---------- */
   const nav = document.getElementById("nav");
   const toggle = document.getElementById("navToggle");
-  const megaItems = document.querySelectorAll(".has-mega");
+  const navMenu = document.getElementById("navMenu");
+  const navItems = [...nav.querySelectorAll(".nav__item")];
+  const megaItems = [...nav.querySelectorAll(".has-mega")];
+  const hoverMenus = () => isDesktop() && window.matchMedia("(hover: hover)").matches;
 
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-menu-open");
-    toggle.setAttribute("aria-expanded", open);
-    document.body.style.overflow = open ? "hidden" : "";
-  });
+  // the dropdowns' pictures, loaded the first time the menu is used
+  let menuLoaded = false;
+  function loadMenu() {
+    if (menuLoaded) return;
+    menuLoaded = true;
+    nav.querySelectorAll("img[data-src]").forEach((img) => {
+      img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
+      img.src = img.dataset.src;
+    });
+  }
+  nav.addEventListener("pointerenter", loadMenu);
+  nav.addEventListener("focusin", loadMenu);
 
-  megaItems.forEach((item) => {
-    const btn = item.querySelector(".nav__link");
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const willOpen = !item.classList.contains("is-open");
-      megaItems.forEach((i) => {
-        i.classList.remove("is-open");
-        i.querySelector(".nav__link").setAttribute("aria-expanded", "false");
-      });
-      if (willOpen) {
-        item.classList.add("is-open");
-        btn.setAttribute("aria-expanded", "true");
-      }
+  // one panel open at a time (null = none)
+  function openMega(item) {
+    if (item) loadMenu();
+    megaItems.forEach((i) => {
+      i.classList.toggle("is-open", i === item);
+      i.querySelector(".nav__link").setAttribute("aria-expanded", String(i === item));
+    });
+  }
+  // the phone menu
+  function setMenu(open) {
+    if (open) loadMenu();
+    nav.classList.toggle("is-menu-open", open);
+    root.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (!open) openMega(null);
+  }
+  toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-menu-open")));
+  window.matchMedia("(min-width: 1081px)").addEventListener("change", () => setMenu(false));
+
+  // the highlight that slides under the links
+  const glide = document.createElement("li");
+  glide.className = "nav__glide";
+  glide.setAttribute("aria-hidden", "true");
+  navMenu.appendChild(glide);
+  function glideTo(item) {
+    const link = item && item.querySelector(".nav__link");
+    if (!link || !isDesktop()) { glide.classList.remove("is-on"); return; }
+    if (!glide.classList.contains("is-on")) { // first one: appears in place instead of sliding in from the last
+      glide.style.transition = "opacity 0.25s";
+      requestAnimationFrame(() => requestAnimationFrame(() => { glide.style.transition = ""; }));
+    }
+    glide.style.setProperty("--x", `${link.offsetLeft}px`);
+    glide.style.setProperty("--w", `${link.offsetWidth}px`);
+    glide.classList.add("is-on");
+  }
+
+  let closeTimer = 0;
+  navItems.forEach((item) => {
+    const isMega = megaItems.includes(item);
+    item.addEventListener("pointerenter", (e) => {
+      if (e.pointerType === "touch" || !hoverMenus()) return;
+      clearTimeout(closeTimer);
+      openMega(isMega ? item : null);
+      glideTo(item);
+    });
+    item.addEventListener("pointerleave", (e) => {
+      if (e.pointerType === "touch" || !hoverMenus()) return;
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => { openMega(null); glideTo(null); }, 140); // a moment to get to the panel
+    });
+    item.addEventListener("focusin", () => { if (item.contains(document.activeElement) && document.activeElement.matches(":focus-visible")) glideTo(item); });
+    if (!isMega) return;
+    item.querySelector(".nav__link").addEventListener("click", (e) => {
+      const byMouse = e.detail > 0 && hoverMenus(); // already opened by hovering: a click doesn't close it
+      const open = byMouse || !item.classList.contains("is-open");
+      openMega(open ? item : null);
+      glideTo(open ? item : null);
+      // phone menu: once it has opened (and the one above has closed), bring it into view
+      if (open && !isDesktop()) setTimeout(() => {
+        if (!item.classList.contains("is-open")) return;
+        const top = navMenu.scrollTop + item.getBoundingClientRect().top - nav.offsetHeight;
+        const over = item.getBoundingClientRect().bottom - navMenu.clientHeight + 16;
+        if (item.getBoundingClientRect().top < nav.offsetHeight || over > 0) navMenu.scrollTo({ top: Math.min(top, navMenu.scrollTop + Math.max(over, 0) || top), behavior: "smooth" });
+      }, 520);
     });
   });
-
-  const closeMenus = () => megaItems.forEach((i) => i.classList.remove("is-open"));
-  document.addEventListener("click", (e) => { if (isDesktop() && !nav.contains(e.target)) closeMenus(); });
+  nav.addEventListener("focusout", (e) => { if (isDesktop() && e.relatedTarget && !nav.contains(e.relatedTarget)) { openMega(null); glideTo(null); } });
+  document.addEventListener("click", (e) => { if (isDesktop() && !nav.contains(e.target)) { openMega(null); glideTo(null); } });
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    closeMenus();
-    nav.classList.remove("is-menu-open");
-    document.body.style.overflow = "";
+    const openItem = megaItems.find((i) => i.classList.contains("is-open"));
+    if (nav.classList.contains("is-menu-open")) { setMenu(false); toggle.focus(); }
+    else if (openItem) { openMega(null); glideTo(null); if (openItem.contains(document.activeElement)) openItem.querySelector(".nav__link").focus(); }
   });
-  // Close mobile menu after following a link
-  nav.querySelectorAll(".nav__menu a").forEach((a) =>
-    a.addEventListener("click", () => {
-      nav.classList.remove("is-menu-open");
-      document.body.style.overflow = "";
-    })
-  );
+  // Close the menu after following a link
+  navMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => { setMenu(false); glideTo(null); }));
+
+  // where you are: 0 Services, 1 Solutions, 2 Company, 3 Our work
+  let navHere = -2;
+  function setHere(i) {
+    if (i === navHere) return;
+    navHere = i;
+    navItems.forEach((item, k) => item.classList.toggle("is-here", k === i));
+  }
+  const pageHere = document.body.classList.contains("service-page") ? 0 : document.body.classList.contains("project-page") ? 3 : -1;
+  if (pageHere >= 0) setHere(pageHere);
+  function navSpy(vh) { // home page: follows the sections
+    if (pageHere >= 0) return;
+    const under = (el) => { const r = el && rectOf(el); return !!r && r.top < vh * 0.4 && r.bottom > vh * 0.4; };
+    const P = works ? worksScrolled(vh) : -1;
+    if (P > 0) setHere(P < W_LIGHT + 0.5 ? 3 : -1);
+    else setHere(under(svc) ? 0 : about && aboutScrolled(vh) > vh * 0.4 ? 2 : -1);
+  }
 
   /* ---------- Split headlines into animated words ---------- */
   document.querySelectorAll("[data-split]").forEach((el) => {
@@ -144,18 +230,15 @@
   const clipReveals = [...document.querySelectorAll('[data-reveal^="clip"]')];
   const revealTargets = [...document.querySelectorAll("[data-reveal], [data-split], [data-reveal-group]")]
     .filter((el) => !clipReveals.includes(el));
+  function reveal(el) {
+    el.classList.add("is-visible");
+    // Remove delay after the entrance so hover effects feel instant
+    setTimeout(() => setVar(el, "--delay", "0ms"), 1200 + (+el.dataset.delay || 0));
+    if (el.querySelector("[data-count]") || el.hasAttribute("data-count")) runCounters(el);
+    revealObserver.unobserve(el);
+  }
   const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        el.classList.add("is-visible");
-        // Remove delay after the entrance so hover effects feel instant
-        setTimeout(() => setVar(el, "--delay", "0ms"), 1200 + (+el.dataset.delay || 0));
-        if (el.querySelector("[data-count]") || el.hasAttribute("data-count")) runCounters(el);
-        revealObserver.unobserve(el);
-      });
-    },
+    (entries) => entries.forEach((entry) => { if (entry.isIntersecting) reveal(entry.target); }),
     { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
   );
   revealTargets.forEach((el) => revealObserver.observe(el));
@@ -206,11 +289,61 @@
     hero.addEventListener("mouseleave", () => { mouseX = 0; mouseY = 0; wake(); });
   }
 
+  /* Phones with stops: switching sections is one quick step of the page, too quick for the scenes
+     that play in it. So those follow a scroll position of their own (pageY), which crosses each
+     switch in SWITCH_TIME seconds at least; everywhere else it is the real one. Swiping on
+     before a switch is over hurries it along. */
+  const SWITCH_TIME = { why: 3.2, how: 3.2, work: 3, project: 1.8, quotes: 2.4, quote: 1.1, cta: 3.2 }; // seconds (bigger = slower)
+  let pacedY = null, pacedAt = 0;
+  function pacedScroll(y, vh) {
+    const now = performance.now();
+    let left = Math.min(0.05, (now - pacedAt) / 1000); // seconds to spend in this frame
+    pacedAt = now;
+    if (pacedY === null || Math.abs(y - pacedY) > 4 * vh) return (pacedY = y); // the first frame, or a link jumped far
+    if (y === pacedY) return y;
+    const zones = cached("switches", () => {
+      const at = (el, k) => { rectOf(el); return geo.get(el).top + k * vh; };
+      const a = (k) => at(about, ABOUT_LEAD + k), w = (k) => at(works, WORKS_LEAD + k);
+      const first = FLOW_START + 0.1, P = wplanes.map((_, i) => projectStop(i)), Q = tcards.map((_, i) => quoteStop(i));
+      const steps = (list, time) => list.slice(1).map((to, i) => [w(list[i]), w(to), time]);
+      return [
+        [at(iris, 1.52), a(0.9), SWITCH_TIME.why],
+        [a(0.9), a(first), SWITCH_TIME.how],
+        [a(FLOW_GLOW + FLOW_GLOW_LEN), w(P[0]), SWITCH_TIME.work],
+        ...steps(P, SWITCH_TIME.project),
+        [w(P[P.length - 1]), w(Q[0]), SWITCH_TIME.quotes],
+        ...steps(Q, SWITCH_TIME.quote),
+        [w(Q[Q.length - 1]), w(W_CTA + W_GROW + 0.05), SWITCH_TIME.cta],
+      ];
+    });
+    const dir = y > pacedY ? 1 : -1;
+    for (let k = 0; k < 12 && pacedY !== y; k++) {
+      const z = zones.find(([from, to]) => (dir > 0 ? pacedY >= from - 1 && pacedY < to - 1 : pacedY <= to + 1 && pacedY > from + 1));
+      if (!z) { // free: straight to the finger, or to the next switch on the way
+        const edges = zones.map(([from, to]) => (dir > 0 ? from : to)).filter((e) => (e - pacedY) * dir > 0);
+        const edge = dir > 0 ? Math.min(y, ...edges) : Math.max(y, ...edges);
+        pacedY = edge;
+        continue;
+      }
+      const far = dir > 0 ? z[1] : z[0];
+      const beyond = Math.max(0, (y - far) * dir) / vh;                       // how far the page has gone on already
+      const speed = ((z[1] - z[0]) / z[2]) * (1 + (beyond > 0.04 ? 2 + beyond * 4 : 0));
+      const goal = (y - far) * dir > 0 ? far : y;
+      const step = Math.min(Math.abs(goal - pacedY), speed * left);
+      left -= step / speed;
+      pacedY = Math.abs(goal - pacedY) - step < 0.5 ? goal : pacedY + dir * step;
+      if (pacedY !== goal || left <= 0) break;
+    }
+    if (pacedY !== y) wake();
+    return pacedY;
+  }
+
   function frame() {
     const vh = VH;
-    const scrollY = (pageY = window.scrollY);
+    const scrollY = window.scrollY;
+    pageY = stops ? pacedScroll(scrollY, vh) : scrollY;
 
-    nav.classList.toggle("is-scrolled", scrollY > 20);
+    navSpy(vh);
 
     const max = cached("page", () => ({ h: root.scrollHeight })).h - window.innerHeight;
     progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
@@ -358,10 +491,11 @@
     const r = rectOf(iris);
     const y = -r.top;
     // how long the stage stays pinned (its real height, which on phones isn't innerHeight)
-    const pinLength = Math.max(1, r.height - cached("irisStage", () => ({ h: irisStage.offsetHeight })).h);
+    const pinLength = Math.max(1, r.height - cached("irisStage", () => ({ h: irisStage.offsetHeight })).h - IRIS_EXTRA * vh);
     // The hexagon is already fully open: it burst out at the end of "What we do".
     // The text rises in while the section is still scrolling into place (y < 0)...
-    const enter = clamp01((y + 0.7 * vh) / (0.6 * vh));
+    // (phones: it's a plain section, everything is there from the start)
+    const enter = svcTap ? 1 : clamp01((y + 0.7 * vh) / (0.6 * vh));
     // ...and (with the grid / rings) fades out just before the hand-off starts
     const fade = clamp01((y - (pinLength - handOffLead() - 0.3 * vh)) / (0.3 * vh));
     const words = clamp01((y - 0.1 * vh) / (pinLength - 0.65 * vh));   // lights up once pinned, done before it fades
@@ -377,21 +511,29 @@
   const easeInOut = (q) => (q < 0.5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2);
   const handOffOn = !!(transfer && orbitCore && iris && about && !reduceMotion);
   if (handOffOn) about.classList.add("about--handoff");
+  // Why Vimentus is pinned, so what sits near the bottom of the screen (the button) never scrolls
+  // high enough for the reveal observer: it's revealed by the hand-off instead
+  let aboutReveals = handOffOn ? [...about.querySelectorAll(".about__text [data-reveal]")] : [];
   const transferHex = lite && handOffOn ? hexFill(document.body, NAVY, CYAN) : null;
   if (transferHex) transferHex.el.classList.add("hexfill--fixed");
 
+  const HAND_LEN = stops ? 0.8 : 1.2;
   function irisHandOff(vh) {
     if (!handOffOn) return;
     // px scrolled since the statement unpinned = since Why Vimentus got stuck to the screen
     // (negative before that). Measured on the section itself, so phones' bars don't matter.
-    const a = -rectOf(about).top;
-    const q = clamp01(a / (0.8 * vh));                   // hexagon lands after 80% of a screen of scrolling
+    const a = aboutScrolled(vh);
+    const q = clamp01(a / (HAND_LEN * vh));              // the hexagon lands after HAND_LEN screens of scrolling
     const started = a > -handOffLead();                  // starts a little before the unpin (see handOffLead)
     const active = started && q < 1;
     about.classList.toggle("is-shown", started);
     transfer.classList.toggle("is-on", active);
     transferRim.classList.toggle("is-on", active);
     orbit.classList.toggle("is-landing", active);
+    if (q > 0.6 && aboutReveals.length) { // most of the hexagon is out of the way
+      aboutReveals.filter((el) => !el.classList.contains("is-visible")).forEach(reveal);
+      aboutReveals = [];
+    }
     if (!active) { if (transferHex) transferHex.hide(); return; }
 
     const cr = orbitCore.getBoundingClientRect();        // fixed on screen while pinned
@@ -410,12 +552,13 @@
 
 
   /* ---------- FLOW: Why Vimentus turns into How we work, in the same pinned stage ----------
-     a = px scrolled since Why Vimentus pinned (the iris lands over the first 0.8 screens).
-     Then:  morph  m 0 → 1 over 1.0 → 1.9 screens: text slides away, the logo grows out of the
+     a = px scrolled since Why Vimentus began (the iris lands over the first HAND_LEN screens).
+     Then (screens, on computers; phones have their own, see FLOW_...):
+            morph  m 0 → 1 over 1.4 → 2.7 screens: text slides away, the logo grows out of the
                    core as an outline, the planets fly onto the line and become the markers
-            steps  s 0 → 3 over 2.3 → 4.1 screens: one step opens at a time. Its facets fill in on
+            steps  s 0 → 3 over 3.1 → 4.9 screens: one step opens at a time. Its facets fill in on
                    the way to it, so they're in place when it's reached (step 4 = whole logo)
-            glow   4.25 → 4.8 screens, then a short rest before Our work (4.95)
+            glow   5.05 → 5.6 screens, then a short rest before Our work (5.75)
      CSS ("FLOW") reads the variables and the .is-lit / .is-current / .is-open classes. */
   const flow = handOffOn ? about.querySelector(".flow") : null;
   const flowSteps = flow ? [...flow.querySelectorAll("[data-flow-step]")] : [];
@@ -430,11 +573,13 @@
   const flowCount = flow ? [...flow.querySelectorAll(".flow__count text")] : [];
   // screens of scrolling (after the pin): step 1 is reached at FLOW_START, then one every FLOW_EACH;
   // FLOW_FILL = share of a step's scroll, just before it's reached, in which its facets fill in
-  const FLOW_START = 2.3, FLOW_EACH = 0.6, FLOW_FILL = 0.62, FLOW_GLOW = 4.25, FLOW_GLOW_LEN = 0.55;
+  // (phones with stops: a screen per step; the section's height is in "PHONE STOPS", styles.css)
+  const MORPH_AT = stops ? 1 : 1.4, MORPH_LEN = stops ? 0.9 : 1.3;
+  const FLOW_START = stops ? 2.3 : 3.1, FLOW_EACH = stops ? 1 : 0.6, FLOW_FILL = 0.62, FLOW_GLOW = stops ? 5.75 : 5.05, FLOW_GLOW_LEN = 0.55;
   // click a step: scroll to where it's open
   flowSteps.forEach((st, i) => st.addEventListener("click", () => {
     const top = about.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: top + (FLOW_START + FLOW_EACH * (i + 0.15)) * VH, behavior: "smooth" });
+    window.scrollTo({ top: top + (ABOUT_LEAD + FLOW_START + FLOW_EACH * (i + 0.15)) * VH, behavior: "smooth" });
   }));
   let flowing = false;
   let flowOpen = -1, flowOpened = 0; // which step is open, and since when (its height is animated)
@@ -457,8 +602,8 @@
     if (!flow || !flowNodes.length) return;
     const ar = rectOf(about);
     if (ar.top > vh * 1.5 || ar.bottom < vh * 0.9) return; // not on screen yet / already covered by Our work: nothing to draw
-    const a = -ar.top;
-    const m = clamp01((a - 1.0 * vh) / (0.9 * vh));
+    const a = aboutScrolled(vh);
+    const m = clamp01((a - MORPH_AT * vh) / (MORPH_LEN * vh));
     const N = flowSteps.length;
     const reach = (a / vh - FLOW_START) / FLOW_EACH;      // i = step i + 1 is reached; below 0 = on the way to the first
     const s = Math.min(N - 1, Math.max(0, reach));
@@ -570,17 +715,19 @@
   const openFades = open ? [...open.querySelectorAll(".vhero__inner, .trust")] : [];
   const openOn = !!(open && document.querySelector("[data-svc]") && !reduceMotion);
   if (openOn) open.classList.add("is-animated");
+  if (openOn && svcTap) open.classList.add("open--scrolls"); // phones: the hero just scrolls away
   const openStage = open && open.querySelector(".open__stage");
-  const openHole = lite && openOn ? hexHole(openStage, "#fff", CYAN) : null;
+  const openHole = lite && openOn && !svcTap ? hexHole(openStage, "#fff", CYAN) : null;
   let heroPaused = false;
 
   function openFrame(vh) {
     if (!openOn) return;
     const y = -rectOf(open).top;
-    const gone = y >= vh;
+    const gone = y >= (svcTap ? 1 : 1.4) * vh;
     open.classList.toggle("is-gone", gone);
+    if (svcTap) return;
     if (gone) { if (lite) { openHole.hide(); setStyle(openStage, "opacity", "0"); } return; }
-    const q = clamp01((y - 0.06 * vh) / (0.86 * vh));         // the crop, over 0.06 → 0.92 screens
+    const q = clamp01((y - 0.06 * vh) / (1.26 * vh));         // the crop, over 0.06 → 1.32 screens
     if (!lite) open.classList.toggle("is-cropping", q > 0);
     else if (heroPaused !== q > 0.12) { // the video needn't play while it's being closed
       heroPaused = q > 0.12;
@@ -588,7 +735,7 @@
     }
     const fade = (1 - clamp01(q / 0.4)).toFixed(3);           // the text goes first
     openFades.forEach((el) => { setStyle(el, "opacity", fade); setStyle(el, "pointerEvents", q > 0.3 ? "none" : ""); });
-    // dissolves into the stacked tiles once they're underneath (from 0.8, see svcFrame)
+    // dissolves into the stacked tiles once they're underneath (from 1.2, see svcFrame)
     if (lite) {
       if (q <= 0) { openHole.hide(); setStyle(openStage, "opacity", "1"); return; }
     } else {
@@ -600,7 +747,7 @@
     const e = easeInOut(q);
     const cx = W / 2 + (t.x - W / 2) * e, cy = H / 2 + (t.y - H / 2) * e;
     const full = hexCover(W / 2, H / 2, W, H);
-    const out = 1 - clamp01((y / vh - 0.88) / 0.12);
+    const out = 1 - clamp01((y / vh - 1.28) / 0.12);
     if (lite) {
       openHole.set(cx, cy, full + (t.r - full) * e);
       setStyle(openStage, "opacity", out.toFixed(3));
@@ -674,12 +821,13 @@
   const svcPanels = svc ? [...svc.querySelectorAll("[data-svc-panel]")] : [];
   const svcOn = !!(svc && svcPanels.length && !reduceMotion);
   let svcActive = -1;
-  const SVC_EXIT = 1.3; // screens of scrolling for the exit into the iris (matches the 130vh in styles.css)
-  const SVC_ENTER = openOn && svcOn ? 1.1 : 0; // ...and for the entrance out of the hero's hexagon (110vh)
+  const SVC_EXIT = 1.8; // screens of scrolling for the exit into the iris (matches the 180vh in styles.css)
+  const SVC_ENTER = openOn && svcOn && !svcTap ? 1.5 : 0; // ...and for the entrance out of the hero's hexagon (150vh)
   if (SVC_ENTER) svc.classList.add("svc--opens");
   if (svcOn) {
     svc.classList.add("is-animated");
-    // click (or focus) a closed panel: scroll to the point where it opens
+    svc.classList.toggle("svc--tap", svcTap);
+    // click a closed panel: scroll to the point where it opens (phones: it just opens)
     const goTo = (i) => {
       const top = svc.getBoundingClientRect().top + window.scrollY;
       const share = (svc.offsetHeight - VH * (1 + SVC_EXIT + SVC_ENTER)) / svcPanels.length;
@@ -687,10 +835,27 @@
     };
     svcPanels.forEach((panel, i) => {
       panel.addEventListener("click", (e) => {
-        if (!panel.classList.contains("is-active")) { e.preventDefault(); goTo(i); }
+        if (!panel.classList.contains("is-active")) { e.preventDefault(); if (svcTap) svcOpen(i); else goTo(i); }
+      });
+      if (!svcTap) return;
+      panel.querySelector(".svc__tab").addEventListener("keydown", (e) => { // keyboards
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); svcOpen(i); }
       });
     });
   }
+
+  function svcOpen(i) {
+    svcActive = i;
+    svcPanels.forEach((p, k) => {
+      p.classList.toggle("is-active", k === i);
+      if (!svcTap) return;
+      const tab = p.querySelector(".svc__tab"); // a closed card's name is its button
+      tab.setAttribute("role", "button");
+      tab.setAttribute("aria-hidden", String(k === i));
+      tab.tabIndex = k === i ? -1 : 0;
+    });
+  }
+  if (svcOn && svcTap) svcOpen(0);
 
   const svcList = svc && svc.querySelector(".svc__panels");
   const svcIris = svc && svc.querySelector(".svc__iris");
@@ -705,13 +870,15 @@
     }));
   }
 
-  /* Lite: on one-column layouts the four cards are a stack. Each slides up over the one before
-     it, following the finger (no resizing). The entrance / exit use four small photo hexagons. */
+  /* Lite: the cards switch without resizing animations; the entrance / exit use four small
+     photo hexagons. On phones (svcTap) there's neither: the section is one plain screen, and
+     the cards are the same separate panels as on a computer, one above the other, opened by
+     tapping. */
   const svcHead = svc && svc.querySelector(".svc__head");
   const svcBars = svcPanels.map((p) => p.querySelector(".svc__progress i"));
   const svcTiles = [];
   let svcHex = null;
-  if (lite && svcOn) {
+  if (lite && svcOn && !svcTap) {
     const stage = svc.querySelector(".svc__stage");
     const { r: R } = svcTile();
     svcPanels.forEach((p) => {
@@ -727,6 +894,11 @@
   function svcLite(vh) {
     const r = rectOf(svc);
     if (r.bottom < -vh || r.top > vh * 1.5) return;
+    if (svcTap) { // only the row's size, for the CSS
+      setVar(svcList, "--lw", `${cached("svcListW", () => ({ w: svcList.clientWidth })).w}px`);
+      setVar(svcList, "--lh", `${svcTile().h}px`);
+      return;
+    }
     if (SVC_ENTER) svc.classList.toggle("is-in", r.top <= 1);
     const n = svcPanels.length;
     const enterLen = SVC_ENTER * vh, exitLen = SVC_EXIT * vh;
@@ -738,25 +910,10 @@
     const entering = Xe < 1;
     const { x: cx, y: cy, r: R, h: LH } = svcTile();
 
-    // the cards
-    let active = 0;
-    const SVC_BAR = LH < 330 ? 0 : 50; // px of a covered card that stays visible (its name); none on sideways phones
-    setVar(svcList, "--bar", `${SVC_BAR}px`);
-    const openH = LH - (n - 1) * SVC_BAR;
-    svcPanels.forEach((p, i) => {
-      const q = i ? easeInOut(clamp01((t - (i - 0.42)) / 0.42)) : 1;       // how far it has come up over the last one
-      if (q > 0.5) active = i;
-      if (stacked) {
-        const from = openH + (i - 1) * SVC_BAR, to = i * SVC_BAR;
-        setStyle(p, "transform", `translate3d(0, ${(i ? from + (to - from) * q : 0).toFixed(1)}px, 0)`);
-      }
-      setStyle(svcBars[i], "transform", `scaleX(${clamp01(t - i).toFixed(3)})`);
-    });
-    if (!stacked) active = Math.min(n - 1, Math.max(0, Math.floor(t)));
-    if (active !== svcActive) {
-      svcActive = active;
-      svcPanels.forEach((p, i) => p.classList.toggle("is-active", i === active));
-    }
+    // the cards: one open at a time (the CSS sizes them)
+    const active = Math.min(n - 1, Math.max(0, Math.floor(t)));
+    svcBars.forEach((bar, i) => setStyle(bar, "transform", `scaleX(${clamp01(t - i).toFixed(3)})`));
+    if (active !== svcActive) svcOpen(active);
 
     // heading + cards come and go
     const show = entering ? easeInOut(clamp01((Xe - 0.4) / 0.55)) : 1 - clamp01(X / 0.2);
@@ -853,10 +1010,10 @@
 
   /* ---------- Works: Our work → Testimonials → CTA, one pinned scene ----------
      P = screens scrolled into the section:
-       0    – 1.1   the flight through How we work's finished logo
-       1.1  – 5.05  the heading, then the projects: each comes closer, rests, passes by
-       5.05 – 5.95  the light at the end grows (testimonials)
-       6.0  – 8.2   quotes (0.55 each)       8.3  – 9.2   their cyan hexagon grows (CTA)
+       0    – 1.6   the flight through How we work's finished logo
+       1.6  – 5.55  the heading, then the projects: each comes closer, rests, passes by
+       5.55 – 6.85  the light at the end grows (testimonials)
+       6.9  – 9.1   quotes (0.55 each)       9.2  – 10.5  their cyan hexagon grows (CTA)
      CSS ("OUR WORK" / "END SCENE"). While scrolling only transforms and opacity change. */
   const works = document.querySelector("[data-works]");
   const wprojs = works ? [...works.querySelectorAll("[data-wproj]")] : [];
@@ -874,15 +1031,19 @@
   const tpeople = works ? [...works.querySelectorAll(".end__person")] : [];
   const tfaces = works ? [...works.querySelectorAll(".end__face text")] : [];
   const wplanes = works ? [worksIntro, ...wprojs].map((el) => ({ el, text: el.querySelector(".wplane__text"), state: "" })) : [];
-  const W_FLY = 1.1, W_EACH = 0.85, W_REST = 0.55;  // W_REST = share of each stop spent standing still
-  const W_LIGHT = 5.05, W_QUOTES = 6.0, W_QUOTE = 0.55, W_CTA = 8.3, W_GROW = 0.9;
+  // (phones with stops: a screen per project / quote; the section's height is in "PHONE STOPS", styles.css)
+  const W_FLY = stops ? 1.1 : 1.6, W_EACH = stops ? 1 : 0.85, W_REST = stops ? 0.2 : 0.55;  // W_REST = share of each stop spent standing still
+  const W_LIGHT = stops ? 5.35 : 5.55, W_QUOTES = stops ? 6.3 : 6.9, W_QUOTE = stops ? 1 : 0.55, W_CTA = stops ? 10 : 9.2, W_GROW = stops ? 0.9 : 1.3;
+  // where each one has come to rest (0 = the heading, then the projects)
+  const projectStop = (i) => W_FLY + W_EACH * (i + W_REST / 2);
+  const quoteStop = (i) => W_QUOTES + W_QUOTE * (stops ? (i ? i + 0.3 : 0.15) : i + 0.5);
   let wCur = -2, tCur = -1, wEnd = true, wShown = false;
   if (worksOn) {
     works.classList.add("is-animated");
     document.body.classList.add("works-end"); // footer follows with no gap
-    const goTo = (P) => window.scrollTo({ top: works.getBoundingClientRect().top + window.scrollY + P * VH, behavior: "smooth" });
-    wtabs.forEach((b, i) => b.addEventListener("click", () => goTo(W_FLY + W_EACH * (i + 1 + W_REST / 2))));
-    tpeople.forEach((b, i) => b.addEventListener("click", () => goTo(W_QUOTES + W_QUOTE * (i + 0.5))));
+    const goTo = (P) => window.scrollTo({ top: works.getBoundingClientRect().top + window.scrollY + (P + WORKS_LEAD) * VH, behavior: "smooth" });
+    wtabs.forEach((b, i) => b.addEventListener("click", () => goTo(projectStop(i + 1))));
+    tpeople.forEach((b, i) => b.addEventListener("click", () => goTo(quoteStop(i))));
     // the logo to fly through: a copy of How we work's facets
     if (flow) flow.querySelectorAll(".flow__facets polygon").forEach((p) => {
       const c = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
@@ -916,7 +1077,7 @@
   function worksFrame(vh) {
     if (!worksOn) return;
     const r = rectOf(works);
-    const P = -r.top / vh;
+    const P = worksScrolled(vh);
     works.classList.toggle("is-shown", P > 0);
     if (P <= 0 && wShown) flightFrame(0, vh, 0); // once, to put the logo / projects away when scrolling back up
     wShown = P > 0;
@@ -1035,7 +1196,7 @@
     }
 
     // testimonials
-    const th = clamp01((P - (W_LIGHT + 0.6)) / 0.35);
+    const th = clamp01((P - (W_LIGHT + W_GROW * 0.667)) / (W_GROW * 0.39));
     const G = clamp01((P - W_CTA) / W_GROW);
     endLayer.classList.toggle("is-shown", th > 0 && G < 1);
     endLayer.classList.toggle("is-on", th > 0.6 && G < 0.1);
@@ -1064,7 +1225,10 @@
     endCta.classList.toggle("is-on", th > 0);
     endCta.classList.toggle("is-growing", G > 0);
     ctaRim.classList.toggle("is-on", G > 0 && G < 1);
-    if (th <= 0) { if (ctaHex) ctaHex.hide(); return; }
+    if (th <= 0) { // (after a jump it can still be showing)
+      if (ctaHex) { ctaHex.hide(); setStyle(endCta, "visibility", "hidden"); setStyle(endCta, "opacity", "0"); }
+      return;
+    }
     const { x, y, core } = cached("endFig", () => {
       const f = inWorksStage(endFig);
       return { x: f.x + endFig.offsetWidth / 2, y: f.y + endFig.offsetHeight / 2, core: (endFig.offsetHeight / 2440) * 930 }; // core = the hexagon's radius in the figure
@@ -1081,6 +1245,38 @@
     setHex([endCta, ctaRim], x, y, core + (hexCover(x, y, W, H) - core) * g);
     ctaRim.style.opacity = Math.min(1, G * 6, (1 - G) * 4).toFixed(3);
     setVar(ctaContent, "--ci", clamp01((g - 0.5) * 2.2).toFixed(3));
+  }
+
+  /* ---------- Phones: fixed steps between sections, free scrolling inside them ----------
+     CSS scroll snapping ("PHONE STOPS" in styles.css). A scene is a stretch of the page (screens
+     from the section's top): taller than the screen, so inside it the page scrolls freely at the
+     finger's pace; leaving it, the page goes to the next section in one smooth step. A flick
+     never runs past a scene's end. Scenes with nothing to scroll through are a single stop, and
+     so is each project and each quote. */
+  if (stops) {
+    const addSnap = (section, cls, top, height) => {
+      const m = document.createElement("i");
+      m.className = cls;
+      m.setAttribute("aria-hidden", "true");
+      m.style.top = `${(top * 100).toFixed(1)}vh`;
+      if (height) m.style.height = `${(height * 100).toFixed(1)}vh`;
+      section.appendChild(m);
+      return m;
+    };
+    const addScene = (section, from, to) => {
+      const scene = addSnap(section, "snap-stop", from, to ? to - from + 1 : 0);
+      if (to) addSnap(section, "snap-stop snap-stop--end", to + 1); // at its bottom edge: only seen once it is reached
+      return scene;
+    };
+    addScene(iris, 0, 1.52);                                                          // our mission: the words light up
+    addScene(about, ABOUT_LEAD + 0.9);                                                             // why
+    const how = addScene(about, ABOUT_LEAD + FLOW_START + 0.1, ABOUT_LEAD + FLOW_GLOW + FLOW_GLOW_LEN);         // how we work: the steps, the whole logo
+    wplanes.forEach((_, i) => addScene(works, WORKS_LEAD + projectStop(i)));          // our work: the heading, each project
+    tcards.forEach((_, i) => addScene(works, WORKS_LEAD + quoteStop(i)));             // testimonials: each quote
+    addScene(works, WORKS_LEAD + W_CTA + W_GROW + 0.05);                                           // cta
+    // links to How we work land on its first step
+    flow.removeAttribute("id");
+    how.id = "process";
   }
 
   /* ---------- Misc ---------- */
